@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<title>War Room · Think Big TLDR · 13 to 16 October 2026</title>
+
+<style>
+  :root{
+    --navy:#060b35; --blue:#2b5cf2; --teal:#14b8a6; --green:#b7fb5e; --red:#cf4a4c; --amber:#f5b942;
+    --muted:rgba(255,255,255,.62); --line:rgba(255,255,255,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--navy);color:#fff;font-family:Roboto,"Helvetica Neue",Arial,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
+
+  .slide{position:fixed;inset:0;display:none;padding:clamp(26px,4.4vw,72px) clamp(28px,5.4vw,90px) clamp(64px,6vw,96px)}
+  .slide.on{display:grid;animation:in .32s ease both}
+  @keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .slide.full{grid-template-columns:1fr;align-content:center}
+  .slide.split{grid-template-columns:minmax(0,0.92fr) minmax(0,1.3fr);gap:clamp(22px,3.2vw,56px);align-items:center}
+  .col{min-width:0}
+
+  .eyebrow{font-size:clamp(10px,1.05vw,14px);letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--teal);margin-bottom:clamp(10px,1.4vw,18px)}
+  .badge{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:clamp(10px,1vw,13px);font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:clamp(11px,1.5vw,18px)}
+  h1{font-size:clamp(32px,min(5.6vw,8vh),78px);line-height:1.02;font-weight:900;letter-spacing:-.02em;max-width:18ch}
+  h2{font-size:clamp(24px,min(3.6vw,5.2vh),52px);line-height:1.06;font-weight:900;letter-spacing:-.02em;margin-bottom:clamp(12px,1.6vw,22px)}
+  .sub{font-size:clamp(14px,1.55vw,22px);color:var(--muted);margin-top:clamp(13px,1.6vw,20px);max-width:46ch;line-height:1.4}
+  .lede{font-size:clamp(13px,min(1.38vw,2vh),20px);line-height:1.42;max-width:40ch;color:rgba(255,255,255,.9);margin-bottom:clamp(13px,1.7vw,22px)}
+
+  ul{list-style:none;display:flex;flex-direction:column;gap:clamp(6px,min(.9vw,1.3vh),12px)}
+  li{font-size:clamp(12px,min(1.3vw,1.9vh),19px);line-height:1.38;padding-left:clamp(16px,1.5vw,24px);position:relative;color:rgba(255,255,255,.93)}
+  li:before{content:"";position:absolute;left:0;top:.52em;width:clamp(6px,.58vw,9px);height:clamp(6px,.58vw,9px);border-radius:50%;background:var(--green)}
+  li b{font-weight:700;color:#fff}
+  .was{color:var(--muted);font-weight:400}
+  .env{display:inline-block;font-size:.7em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(20,184,166,.45);border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:.12em;white-space:nowrap}
+  .env.stg{color:var(--green);border-color:rgba(183,251,94,.4)}
+  .env.next{color:var(--amber);border-color:rgba(245,185,66,.45)}
+
+  .stats{display:flex;flex-wrap:wrap;gap:clamp(16px,3vw,52px);margin-top:clamp(16px,2.2vw,30px)}
+  .stat .n{font-size:clamp(34px,min(5.2vw,8vh),74px);font-weight:900;line-height:1;letter-spacing:-.03em}
+  .stat .l{font-size:clamp(10px,1vw,14px);letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:8px;font-weight:500}
+  .stat.b .n{color:var(--blue)} .stat.t .n{color:var(--teal)} .stat.g .n{color:var(--green)} .stat.w .n{color:#fff}
+  .slide.split .stats{gap:clamp(14px,2vw,30px)}
+  .slide.split .stat .l{letter-spacing:.08em;max-width:12ch;line-height:1.3}
+
+  .fronts{display:grid;grid-template-columns:1fr 1fr;gap:clamp(9px,1.1vw,15px)}
+  .fronts.three{grid-template-columns:1fr 1fr 1fr}
+  .front{border:1px solid var(--line);border-radius:12px;padding:clamp(11px,1.3vw,18px);background:rgba(255,255,255,.035)}
+  .front .t{font-size:clamp(13px,min(1.3vw,2vh),18px);font-weight:700;line-height:1.25}
+  .front .d{font-size:clamp(10px,min(1vw,1.6vh),14px);color:var(--muted);margin-top:6px;line-height:1.34}
+  .front .d b{color:rgba(255,255,255,.88)}
+  .front .c{font-size:clamp(10px,.92vw,13px);color:var(--teal);margin-top:8px;font-weight:700;letter-spacing:.06em}
+  .fronts.three{gap:clamp(12px,1.4vw,20px)}
+  .fronts.three .front{padding:clamp(14px,1.7vw,26px)}
+  .fronts.three .front .t{font-size:clamp(14px,min(1.55vw,2.4vh),22px)}
+  .fronts.three .front .d{font-size:clamp(11px,min(1.18vw,1.9vh),16.5px);margin-top:10px}
+  .fronts.three .front .env{display:table;margin:0 0 10px 0}
+  .front.found{border-color:rgba(207,74,76,.45)}
+  .front.found .k{color:#ff8a8c}
+  .k{font-size:clamp(10px,.95vw,13px);letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--green);margin-bottom:6px}
+
+  table{border-collapse:collapse;width:100%;font-size:clamp(11px,min(1.12vw,1.75vh),16px)}
+  th{text-align:left;font-weight:700;color:var(--teal);font-size:.82em;letter-spacing:.1em;text-transform:uppercase;padding:0 12px 8px 0;border-bottom:1px solid var(--line)}
+  td{padding:clamp(5px,.7vw,9px) 12px clamp(5px,.7vw,9px) 0;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.35;color:rgba(255,255,255,.92)}
+  td.num,th.num{text-align:right;white-space:nowrap}
+  td.mut{color:var(--muted)}
+  tr.hi td{color:#fff;font-weight:700}
+
+  .note{font-size:clamp(10px,.95vw,13px);color:var(--muted);margin-top:clamp(10px,1.3vw,16px);line-height:1.4}
+  .note b{color:rgba(255,255,255,.85)}
+  .refs{margin-top:clamp(12px,1.6vw,20px);font-size:clamp(10px,.95vw,13px);color:var(--muted)}
+  .refs a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(20,184,166,.35);margin-right:12px;white-space:nowrap}
+  .refs a:hover{color:#fff;border-color:#fff}
+
+  .bar{display:flex;align-items:flex-end;gap:clamp(12px,1.6vw,22px);margin-top:6px}
+  .bar .c{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%}
+  .bar .v{flex:none;width:100%;border-radius:8px 8px 2px 2px;background:linear-gradient(180deg,var(--teal),var(--blue))}
+  .bar .c:last-child .v{background:linear-gradient(180deg,var(--green),var(--teal))}
+  .bar .n{font-weight:900;font-size:clamp(16px,min(1.9vw,3vh),28px);margin-bottom:6px}
+  .bar .l{font-size:clamp(10px,.95vw,13px);color:var(--muted);margin-top:8px;text-align:center;line-height:1.3}
+
+  .nav{position:fixed;bottom:clamp(12px,1.7vw,24px);left:0;right:0;display:flex;align-items:center;justify-content:center;gap:13px;z-index:20}
+  .dots{display:flex;gap:6px}
+  .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.24);cursor:pointer;border:0;padding:0;transition:.18s}
+  .dot.on{background:var(--green);transform:scale(1.28)}
+  .arrow{background:rgba(255,255,255,.07);border:1px solid var(--line);color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:15px;display:grid;place-items:center;transition:.18s}
+  .arrow:hover{background:rgba(255,255,255,.18)}
+  .count{position:fixed;top:clamp(14px,1.9vw,26px);right:clamp(18px,2.6vw,40px);font-size:clamp(10px,1vw,13px);color:var(--muted);letter-spacing:.1em;z-index:20}
+  .brandbar{position:fixed;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--teal) 55%,var(--green));z-index:20}
+  .hint{position:fixed;bottom:clamp(12px,1.7vw,24px);right:clamp(18px,2.6vw,40px);font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.08em;z-index:20}
+
+  @media (max-width:900px){
+    .slide.split{grid-template-columns:1fr;align-content:center;gap:18px}
+    .slide{overflow-y:auto}
+    .fronts,.fronts.three{grid-template-columns:1fr}
+    .lede,.sub{max-width:none}
+    .hint{display:none}
+  }
+
+  /* Print / PDF: one slide per landscape page, nav hidden. */
+  @page{size:1440px 900px;margin:0}
+  @media print{
+    html,body{height:auto;overflow:visible;background:var(--navy);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .slide{position:relative;display:grid !important;width:1440px;height:900px;page-break-after:always;break-after:page;animation:none}
+    .nav,.hint,.count{display:none}
+    .brandbar{position:absolute}
+    .slide,.slide.on{overflow:hidden !important;align-content:center;animation:none !important;opacity:1 !important;transform:none !important}
+    .slide.split{grid-template-columns:minmax(0,0.92fr) minmax(0,1.3fr) !important;gap:56px !important;align-items:center}
+    .fronts{grid-template-columns:1fr 1fr !important}
+    .fronts.three{grid-template-columns:1fr 1fr 1fr !important}
+    .lede{max-width:40ch !important}
+  }
+</style>
+</head>
+<body>
+<div class="brandbar"></div>
+<div class="count"><span id="cur">1</span> / <span id="tot">11</span></div>
+
+<!-- 1. Title -->
+<section class="slide full on">
+  <div class="col">
+    <div class="badge">Think Big · War Room · 13 to 16 October</div>
+    <div class="eyebrow">Friday War Room check-in · TLDR</div>
+    <h1>Faster, steadier, and cheaper to run</h1>
+    <p class="sub">EID’s Daily Clips is ready every morning. Jackson’s smoke-test fixes are verified on staging and in the next production release. The news engine’s release steps run on cloud runners, on a capped budget.</p>
+    <div class="stats">
+      <div class="stat b"><div class="n">119</div><div class="l">Code changes merged</div></div>
+      <div class="stat t"><div class="n">~94</div><div class="l">DUs (est.)</div></div>
+      <div class="stat g"><div class="n">7</div><div class="l">Production releases</div></div>
+      <div class="stat w"><div class="n">23</div><div class="l">Issues closed</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. What EID has in production -->
+<section class="slide full">
+  <div class="col">
+    <div class="eyebrow">What EID has in production today</div>
+    <h2>Six things working for Energy In Depth right now</h2>
+    <div class="fronts three">
+      <div class="front"><div class="t">A daily edition, every morning<span class="env">Production</span></div><div class="d">EID’s Daily Clips edition has been ready every day since 14 October.</div><div class="c">#15169</div></div>
+      <div class="front"><div class="t">EID’s own editorial picks lead<span class="env">Production</span></div><div class="d">EID’s Morning News selection is on by default: its picks lead Daily Clips in EID’s own section order, roundups skipped.</div><div class="c">#14857 · #15179 · #15202</div></div>
+      <div class="front"><div class="t">Paywalled stories, checked first<span class="env">Production</span></div><div class="d">A paywalled story gets a summary when two independent searches find readable coverage. 10 checks a day, 50 with Premium.</div><div class="c">#14976 · #15204</div></div>
+      <div class="front"><div class="t">Summaries from the story itself<span class="env">Production</span></div><div class="d">Summaries are written from the article’s own text, not from a promo card or an off-story page.</div><div class="c">#15172 · #15200 · #15218</div></div>
+      <div class="front"><div class="t">EID editions flow to the Outbound desk<span class="env">Production</span></div><div class="d">Each Daily Clips edition reaches the Outbound desk for review, with its sources attached.</div><div class="c">#15157</div></div>
+      <div class="front"><div class="t">One paid edition per day<span class="env">Production</span></div><div class="d">A repeat request reuses today’s edition instead of paying for another. Checked live on 16 October across every client.</div><div class="c">#15230 · #15240 · #15262</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Jackson's smoke test -->
+<section class="slide split">
+  <div class="col">
+    <div class="eyebrow">Jackson’s 15 October smoke test</div>
+    <h2>Jackson’s fixes, delivered</h2>
+    <p class="lede">Jackson ran the full EID pipeline on 15 October. We traced every row in EID’s own data and delivered the fixes within a day. They are verified on staging and in the next production release.</p>
+    <ul>
+      <li><b>Verified on staging</b> on EID’s data, 16 October</li>
+      <li><b>In the final release</b> to production</li>
+    </ul>
+  </div>
+  <div class="col">
+    <table>
+      <tr><th>Rows</th><th>Delivered</th><th>Now</th></tr>
+      <tr><td>5, 6</td><td>Clean headlines: no raw character codes, no repeated “ – Outlet” ending</td><td><span class="env stg">Staging ✓</span></td></tr>
+      <tr><td>9</td><td>Watchtower tabs show “counting sources” while they load, then the real totals</td><td><span class="env stg">Staging ✓</span></td></tr>
+      <tr><td>10</td><td>Outlet history counts only stories about EID’s campaign (Washington Examiner: about 143 in 90 days)</td><td><span class="env stg">Staging ✓</span></td></tr>
+      <tr><td>17</td><td>Verify judges exactly the text the tab shows</td><td><span class="env stg">Staging ✓</span></td></tr>
+      <tr><td>18</td><td>Verify names its parts, for example “40 links and 28 opening lines (68 checks)”</td><td><span class="env stg">Staging ✓</span></td></tr>
+    </table>
+    <div class="refs"><a href="https://github.com/growthpigs/alpha-war-room/pull/15365">#15365</a><a href="https://github.com/growthpigs/alpha-war-room/pull/15386">#15386</a><a href="https://github.com/growthpigs/alpha-war-room/pull/15396">#15396</a></div>
+  </div>
+</section>
+
+<!-- 4. News pipeline: improvements -->
+<section class="slide full">
+  <div class="col">
+    <div class="eyebrow">News &amp; Media pipeline upgrade</div>
+    <h2>A faster, more reliable news engine</h2>
+    <div class="fronts three">
+      <div class="front"><div class="t">Paywalled stories get summaries<span class="env">Production</span></div><div class="d">The stories EID values most now get a summary once two independent engines both find readable coverage. The team grades them in a dedicated tab.</div><div class="c">#14976 · #15197 · #15204</div></div>
+      <div class="front"><div class="t">Real publisher links<span class="env">Production</span></div><div class="d">Google News links are decoded in the cloud: 282 of 282 resolved on 13 October, and 97% of links in EID’s edition went straight to the publisher.</div><div class="c">#15173</div></div>
+      <div class="front"><div class="t">A picker tuned to EID<span class="env">Production</span></div><div class="d">EID’s own editorial selection is built into the pipeline and on by default.</div><div class="c">#14857 · #15179</div></div>
+      <div class="front"><div class="t">Lighter, faster Verify<span class="env">Production</span></div><div class="d">Verify checks read only the columns they need, with a gentle back-off while a run finishes.</div><div class="c">#14916</div></div>
+      <div class="front"><div class="t">Releases on cloud runners<span class="env">Shipped 16 Oct</span></div><div class="d">The release steps run on dedicated cloud runners.</div><div class="c">#15341</div></div>
+      <div class="front"><div class="t">Extra capacity when it’s busy<span class="env">Shipped 16 Oct</span></div><div class="d">When our own runners are full, tests spill to cloud overflow automatically, so work keeps moving fast.</div><div class="c">#15367 · #15296</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. What it costs, what the client gets -->
+<section class="slide split">
+  <div class="col">
+    <div class="eyebrow">News &amp; Media pipeline upgrade · the investment</div>
+    <h2>What it costs, and what you get for it</h2>
+    <p class="lede">A small, capped monthly spend, approved on 8 October.</p>
+    <ul>
+      <li><b>Releases and monitors on reliable cloud runners</b></li>
+      <li><b>More stories with real summaries</b>, paywalled ones included</li>
+      <li><b>Real publisher links</b> for every Google News story in Daily Clips</li>
+      <li><b>A picker tuned to what EID publishes</b></li>
+    </ul>
+  </div>
+  <div class="col">
+    <table>
+      <tr><th>Item</th><th class="num">Monthly</th><th>What it buys</th></tr>
+      <tr><td>Cloud runners for deploys and database jobs</td><td class="num">~$50</td><td>Production deploys and monitors on reliable cloud runners</td></tr>
+      <tr><td>Overflow CI, only when our runners are full</td><td class="num">≤ ~$30</td><td>Tests that never queue for an hour. Capped at 60 h a month, 8 h a day</td></tr>
+      <tr><td>Residential link decoding</td><td class="num">Daily cap</td><td>Real publisher links for every Google News story</td></tr>
+    </table>
+    <div class="refs"><a href="https://github.com/growthpigs/alpha-war-room/issues/15296">#15296</a><a href="https://github.com/growthpigs/alpha-war-room/issues/15173">#15173</a></div>
+  </div>
+</section>
+
+<!-- 6. Running cost down -->
+<section class="slide split">
+  <div class="col">
+    <div class="eyebrow">Speed and cost</div>
+    <h2>Database traffic down 39% in two days</h2>
+    <p class="lede">We measured traffic query by query and cut the biggest readers one fix at a time, with every page showing the same data.</p>
+    <ul>
+      <li><b>Busy pages</b> read only the columns they need <span class="env">Production</span></li>
+      <li><b>18.3 GB of duplicate index</b> removed; reads run on the identical unique index</li>
+      <li><b>Next release:</b> lighter prediction-market sync and SWOT de-duplication <span class="env stg">Staging</span></li>
+      <li><b>AI spend:</b> first efficiency fixes merged <span class="env stg">Staging</span></li>
+    </ul>
+  </div>
+  <div class="col">
+    <div class="bar">
+      <div class="c"><div class="n">15.5</div><div class="v" style="height:30vh"></div><div class="l">GB / day<br>14 Oct</div></div>
+      <div class="c"><div class="n">12.2</div><div class="v" style="height:23.6vh"></div><div class="l">GB / day<br>15 Oct</div></div>
+      <div class="c"><div class="n">9.5</div><div class="v" style="height:18.4vh"></div><div class="l">GB / day<br>16 Oct</div></div>
+    </div>
+    <p class="note">Daily database network transfer on production, from the provider’s meter.</p>
+    <div class="refs"><a href="https://github.com/growthpigs/alpha-war-room/issues/15162">#15162</a><a href="https://github.com/growthpigs/alpha-war-room/pull/15389">#15389</a><a href="https://github.com/growthpigs/alpha-war-room/pull/15375">#15375</a><a href="https://github.com/growthpigs/alpha-war-room/pull/15356">#15356</a></div>
+  </div>
+</section>
+
+<!-- 7. Releases -->
+<section class="slide split">
+  <div class="col">
+    <div class="eyebrow">Releases</div>
+    <h2>Seven to production. The next one is ready.</h2>
+    <p class="lede">The next production release is built and verified on staging.</p>
+    <div class="stats">
+      <div class="stat g"><div class="n">7</div><div class="l">To production</div></div>
+      <div class="stat t"><div class="n">29</div><div class="l">To staging</div></div>
+    </div>
+  </div>
+  <div class="col">
+    <ul>
+      <li><b>Live:</b> production serves the 16 October 08:23 Paris release</li>
+      <li><b>Next release carries:</b> Jackson’s smoke-test fixes · the database savings · the first AI efficiency fixes</li>
+      <li><b>Outbound desk, BREAKING alerts:</b> capitals in the subject, an hourly reminder until someone decides, a turn-off link, and an end-of-day owner check <span class="env stg">Staging</span></li>
+      <li><b>Safer releases:</b> a production release in flight can’t be interrupted by a staging update</li>
+    </ul>
+    <div class="refs"><a href="https://github.com/growthpigs/alpha-war-room/issues/15337">#15337</a><a href="https://github.com/growthpigs/alpha-war-room/pull/15349">#15349</a><a href="https://github.com/growthpigs/alpha-war-room/pull/15387">#15387</a><a href="https://github.com/growthpigs/alpha-war-room/issues/15333">#15333</a></div>
+  </div>
+</section>
+
+<!-- 8. What Beagle delivered -->
+<section class="slide full">
+  <div class="col">
+    <div class="eyebrow">Beagle · delivered this week</div>
+    <h2>What Beagle delivered</h2>
+    <div class="fronts three">
+      <div class="front"><div class="t">Outbound desk, end to end</div><div class="d">The client picker works, approved and rejected rows carry every action, and sources are set per client in admin.</div><div class="c">#13610 · #13486 · #13487</div></div>
+      <div class="front"><div class="t">Reviewer control</div><div class="d">Reviewer decisions on held items, and a per-client gate: gated, open or off.</div><div class="c">#12873 · #12874</div></div>
+      <div class="front"><div class="t">Duty email with a daily cap</div><div class="d">An off switch and a daily cap on duty emails.</div><div class="c">#12600</div></div>
+      <div class="front"><div class="t">USA-only news for EID</div><div class="d">One publisher-country gate on every news lane, with named foreign outlets allowed.</div><div class="c">#12865</div></div>
+      <div class="front"><div class="t">Relevance with a record</div><div class="d">The relevance check keeps a record of every story it removes.</div><div class="c">#13554</div></div>
+      <div class="front"><div class="t">Easier sign-in</div><div class="d">“Trust this device for 30 days” starts ticked.</div><div class="c">#12864</div></div>
+    </div>
+    <p class="note">Each one is closed on a recorded acceptance check.</p>
+  </div>
+</section>
+
+<!-- 9. Numbers -->
+<section class="slide split">
+  <div class="col">
+    <div class="eyebrow">The numbers · 13 to 16 October</div>
+    <h2>119 code changes in three and a half days</h2>
+    <p class="lede">155 pull requests merged. 36 are release pointers that carry no code, so the headline counts 119.</p>
+    <ul>
+      <li><b>Mix:</b> 69 fixes · 12 features · 6 tests · 4 performance · 28 CI and other</li>
+      <li><b>DUs:</b> about 94 (feature 1.5, performance 1.0, fix 0.8, test 0.5, docs 0.3, other 0.5)</li>
+      <li><b>23 issues closed</b> · 7 production and 29 staging releases</li>
+    </ul>
+    <p class="note">A DU is an estimate that weights each merged change by type.</p>
+  </div>
+  <div class="col">
+    <table>
+      <tr><th>Typical weekly output, same retainer</th><th class="num">Code changes</th><th class="num">DUs</th></tr>
+      <tr><td>Solo AI-equipped engineer</td><td class="num">~10–20</td><td class="num">~12–18</td></tr>
+      <tr><td>AI-augmented agency</td><td class="num">~15–30</td><td class="num">~20–30</td></tr>
+      <tr class="hi"><td>War Room, 13 to 16 October (3.5 days)</td><td class="num">119</td><td class="num">~94</td></tr>
+    </table>
+    <p class="note">Sources: LinearB 2026 engineering benchmarks; arXiv, May 2026, AI coding-assistant rollout study.</p>
+  </div>
+</section>
+
+<!-- 10. Index -->
+<section class="slide full">
+  <div class="col">
+    <div class="eyebrow">Index · 13 to 16 October</div>
+    <h2>What we delivered</h2>
+    <table>
+      <tr><th>Issue</th><th>What</th><th>Where</th></tr>
+      <tr><td>#15365 · #15386 · #15396</td><td>Jackson’s smoke-test fixes: headlines, Watchtower, Verify</td><td>Verified on staging · next release</td></tr>
+      <tr><td>#15157</td><td>EID editions flow to the Outbound desk</td><td>Production</td></tr>
+      <tr><td>#15172</td><td>Summaries written from the story’s own text</td><td>Production</td></tr>
+      <tr><td>#14976 · #15230</td><td>Two-source paywall check · one paid edition a day</td><td>Production</td></tr>
+      <tr><td>#13610 · #13486 · #13487</td><td>Outbound client picker · desk actions · sources per client</td><td>Delivered</td></tr>
+      <tr><td>#12873 · #12874 · #12600</td><td>Reviewer decisions · per-client gate · duty email cap</td><td>Delivered</td></tr>
+      <tr><td>#12864 · #12865 · #13554</td><td>“Trust this device” · USA-only news · relevance record</td><td>Delivered</td></tr>
+      <tr><td>#15162</td><td>Database traffic down 39%</td><td>Production</td></tr>
+      <tr><td>#15337</td><td>Outbound BREAKING alerts and owner check</td><td>Staging</td></tr>
+    </table>
+    <p class="note">Links are live in the email.</p>
+  </div>
+</section>
+
+<!-- 11. Questions -->
+<section class="slide full">
+  <div class="col">
+    <div class="eyebrow">13 to 16 October 2026</div>
+    <h1>Questions?</h1>
+    <div class="stats">
+      <div class="stat b"><div class="n">119</div><div class="l">Code changes</div></div>
+      <div class="stat t"><div class="n">7</div><div class="l">Production releases</div></div>
+      <div class="stat g"><div class="n">−39%</div><div class="l">Database transfer / day</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="nav">
+  <button class="arrow" id="prev" aria-label="Previous slide">&#8249;</button>
+  <div class="dots" id="dots"></div>
+  <button class="arrow" id="next" aria-label="Next slide">&#8250;</button>
+</div>
+<div class="hint">← → to navigate · F for full screen</div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var dots = document.getElementById('dots');
+  var cur = 0;
+  document.getElementById('tot').textContent = slides.length;
+  slides.forEach(function(_, i){
+    var b = document.createElement('button');
+    b.className = 'dot' + (i === 0 ? ' on' : '');
+    b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    b.addEventListener('click', function(){ go(i); });
+    dots.appendChild(b);
+  });
+  function go(n){
+    cur = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function(s, i){ s.classList.toggle('on', i === cur); });
+    Array.prototype.forEach.call(dots.children, function(d, i){ d.classList.toggle('on', i === cur); });
+    document.getElementById('cur').textContent = cur + 1;
+    if (history.replaceState) history.replaceState(null, '', '#' + (cur + 1));
+  }
+  var h = parseInt((location.hash || '').slice(1), 10);
+  if (h > 0) go(h - 1);
+  document.getElementById('next').addEventListener('click', function(){ go(cur + 1); });
+  document.getElementById('prev').addEventListener('click', function(){ go(cur - 1); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(cur + 1); }
+    if (e.key === 'ArrowLeft'  || e.key === 'PageUp') { e.preventDefault(); go(cur - 1); }
+    if (e.key === 'Home') { go(0); }
+    if (e.key === 'End')  { go(slides.length - 1); }
+    if (e.key === 'f' || e.key === 'F') {
+      if (document.fullscreenElement) { document.exitFullscreen(); }
+      else if (document.documentElement.requestFullscreen) { document.documentElement.requestFullscreen(); }
+    }
+  });
+})();
+</script>
+</body>
+</html>
