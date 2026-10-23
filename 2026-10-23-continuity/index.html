@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Dachshund · the War Room contingency plan · draft</title>
+<title>Dachshund: War Room continuity and recovery plan</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -146,14 +146,14 @@
 <!-- 1. Title -->
 <section class="slide full on">
   <div class="col">
-    <div class="badge">New epic · Dachshund · runs alongside Corgi · draft</div>
+    <div class="badge">New epic · Dachshund · runs alongside Corgi</div>
     <div class="eyebrow">Think Big TLDR · 23 October 2026</div>
-    <h1>Dachshund: the War Room contingency plan</h1>
+    <h1>Dachshund: War Room continuity and recovery plan</h1>
     <p class="sub" style="max-width:64ch">The War Room team is right: it's much more than the code. The code alone would not let you restart War Room. You also need the accounts, keys, infrastructure, pipelines and the knowledge of how they fit together. <b style="color:#fff">That's what this plan covers.</b></p>
     <div class="stats">
-      <div class="stat b"><div class="n">6</div><div class="l">Workstreams</div></div>
-      <div class="stat t"><div class="n">30 days</div><div class="l">Starts now</div></div>
-      <div class="stat g"><div class="n">~23 Nov</div><div class="l">Lands</div></div>
+      <div class="stat b"><div class="n">6</div><div class="l" style="max-width:none">Workstreams, 6 documents</div></div>
+      <div class="stat t"><div class="n">30 days</div><div class="l" style="max-width:none">Starts now</div></div>
+      <div class="stat g"><div class="n">~23 Nov</div><div class="l" style="max-width:none">Lands</div></div>
     </div>
   </div>
 </section>
@@ -162,8 +162,8 @@
 <section class="slide split">
   <div class="col">
     <div class="eyebrow">What Dachshund is</div>
-    <h2>A standard contingency plan, run alongside Corgi</h2>
-    <p class="lede">Every serious website and app needs a contingency plan: a written, tested record of everything it takes to restart the service. War Room is no different.</p>
+    <h2>A standard continuity and recovery plan</h2>
+    <p class="lede">Every serious website and app needs a continuity and recovery plan: a written, tested record of everything it takes to keep the service running and to restart it. War Room is no different.</p>
     <ul>
       <li><b>Corgi</b> stays the main epic: it stabilises the app, for delivery on 10 November</li>
       <li><b>Dachshund</b> is a new epic, in parallel: it starts now and takes 30 days, landing about <b>23 November</b></li>
@@ -199,16 +199,17 @@
 <!-- 4. Workstreams -->
 <section class="slide full">
   <div class="col">
-    <div class="eyebrow">The work · six workstreams</div>
-    <h2>Six workstreams, each with a clear finish line</h2>
+    <div class="eyebrow">The work · six workstreams, six documents</div>
+    <h2>Writing the missing manual</h2>
+    <p class="lede" style="max-width:84ch">War Room grew fast, on a live system, one feature at a time. Much of how it runs today lives in code and settings, not on paper. Dachshund writes that manual down, and each workstream ends in a named document.</p>
     <div class="tw"><table class="ix">
-      <tr><th>#</th><th>Workstream</th><th>What it covers</th><th>Done when</th></tr>
-      <tr><td>1</td><td><b>Document the application</b></td><td>The architecture: every service, the three databases, how data flows between them, and the 20+ outside vendors</td><td>One overview explains how War Room fits together</td></tr>
-      <tr><td>2</td><td><b>Runbooks</b></td><td>Step-by-step guides: deploy, roll back, restore from backup, and the common failures</td><td>Each guide is written and walked through on staging</td></tr>
-      <tr><td>3</td><td><b>Accounts in Think Big's name</b></td><td>Hosting and vendors still in Roderic's name (KIE, GNews, DataForSEO, GitHub, Render and others), including Render's two workspaces</td><td>Every account is in Think Big's name, listed in one register</td></tr>
-      <tr><td>4</td><td><b>Credentials vault</b></td><td>Every key and password, including the ones War Room makes for itself</td><td>All of them sit in a vault Think Big controls</td></tr>
-      <tr><td>5</td><td><b>GitHub organisation move</b></td><td>Move the code, re-apply branch protection, re-point deploy hooks, build pipelines and access tokens, and sweep the 1,200+ hard-coded references</td><td>The code lives in Think Big's organisation with every check passing</td></tr>
-      <tr><td>6</td><td><b>Build and support systems</b></td><td>The dedicated build machines, the automated review checks, the gateway service and alerting</td><td>Each one has a documented home</td></tr>
+      <tr><th>#</th><th>Workstream</th><th>What it covers</th><th>The document it delivers</th></tr>
+      <tr><td>1</td><td><b>The application</b></td><td>Every service, the three databases, how data flows between them, and the 20+ outside vendors</td><td><b>Architecture guide</b></td></tr>
+      <tr><td>2</td><td><b>Environments</b></td><td>Test, staging and production: hosting on Netlify, Render (split across two workspaces), Neon, Cloudflare and Sentry</td><td><b>Environment rebuild guide</b></td></tr>
+      <tr><td>3</td><td><b>Accounts and keys</b></td><td>Hosting and vendor accounts moved into Think Big's name; every key in a Think Big vault, including the ones War Room makes for itself</td><td><b>Vendor and secrets inventory</b> <span class="was">(names only, never values)</span></td></tr>
+      <tr><td>4</td><td><b>GitHub and build pipelines</b></td><td>The move to Think Big's organisation, deploy hooks, tokens, the 1,200+ hard-coded references, the build machines and the automated review checks</td><td><b>GitHub, CI and build systems guide</b></td></tr>
+      <tr><td>5</td><td><b>Day-to-day operations</b></td><td>Deploy, roll back, restore from backup and the common failures, plus the gateway service and alerting</td><td><b>Runbooks</b>, one per alert or failure</td></tr>
+      <tr><td>6</td><td><b>Recovery test</b></td><td>A walkthrough on staging with Roderic, checking the documents against the real system; Jackson's access confirmed</td><td><b>Recovery test log</b></td></tr>
     </table></div>
   </div>
 </section>
@@ -216,7 +217,7 @@
 <!-- 5. GitHub move -->
 <section class="slide split">
   <div class="col">
-    <div class="eyebrow">Workstream 5 · the GitHub move</div>
+    <div class="eyebrow">Workstream 4 · the GitHub move</div>
     <h2>Blocked on one upgrade, then a lot of re-wiring</h2>
     <p class="lede">On 22 October the repo moved to Think-Big-Media. That organisation is on GitHub's free plan, which does not allow branch protection on private repos, so the required quality checks switched off. Roderic moved it back the same day; everything was checked intact and protection restored. <span class="state live">done</span></p>
     <ul>
@@ -236,7 +237,7 @@
 <!-- 6. Build and support systems -->
 <section class="slide full">
   <div class="col">
-    <div class="eyebrow">Workstream 6 · beyond the hosting</div>
+    <div class="eyebrow">Workstreams 4 and 5 · beyond the hosting</div>
     <h2>The systems that keep releases safe</h2>
     <p class="lede" style="max-width:78ch">These run on Roderic's side today. Each one needs a documented home in the plan, set up so Think Big holds it.</p>
     <div class="fronts">
@@ -257,7 +258,7 @@
       <div class="front"><div class="t">Week 1 · from 23 Oct</div><ul>
         <li>Register of every account, and whose name it is in</li>
         <li>Vault set up with Think Big</li>
-        <li>Architecture overview started</li>
+        <li>Architecture guide started</li>
         <li>Think Big's decisions, incl. GitHub Team</li>
       </ul></div>
       <div class="front"><div class="t">Week 2 · from 30 Oct</div><ul>
@@ -273,7 +274,8 @@
       </ul></div>
       <div class="front"><div class="t">Week 4 · to ~23 Nov</div><ul>
         <li>Runbooks: deploy, roll back, restore, common failures</li>
-        <li>Architecture overview finished</li>
+        <li>Recovery test on staging, written up in the log</li>
+        <li>Architecture and rebuild guides finished</li>
         <li>Jackson's access confirmed, and a walkthrough with Roderic</li>
         <li>Dachshund delivered, about 23 Nov</li>
       </ul></div>
@@ -292,8 +294,8 @@
   </div>
   <div class="col">
     <div class="weeks" style="grid-template-columns:1fr 1fr;margin-top:0">
-      <div class="front"><div class="t">1 · Upgrade GitHub</div><div class="d">Move Think-Big-Media to GitHub Team (paid per member per month; about 4 members today), so branch protection works.</div><div class="c">Workstream 5</div></div>
-      <div class="front"><div class="t">2 · Who holds the vault</div><div class="d">Name the Think Big person who owns the vault for every key and password.</div><div class="c">Workstream 4</div></div>
+      <div class="front"><div class="t">1 · Upgrade GitHub</div><div class="d">Move Think-Big-Media to GitHub Team (paid per member per month; about 4 members today), so branch protection works.</div><div class="c">Workstream 4</div></div>
+      <div class="front"><div class="t">2 · Who holds the vault</div><div class="d">Name the Think Big person who owns the vault for every key and password.</div><div class="c">Workstream 3</div></div>
       <div class="front"><div class="t">3 · Account owners</div><div class="d">Name who on Think Big's side owns the hosting and vendor accounts as they move.</div><div class="c">Workstream 3</div></div>
       <div class="front"><div class="t">4 · Agree Dachshund</div><div class="d">A parallel 30-day epic alongside Corgi, landing about 23 November.</div><div class="c">The plan</div></div>
     </div>
