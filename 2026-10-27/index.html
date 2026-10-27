@@ -137,10 +137,19 @@
   table.ix th{color:var(--teal);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:.85em}
   table.ix a{color:var(--teal);text-decoration:none}
 </style>
+<style>
+  .oc{display:flex;flex-direction:column;gap:clamp(18px,3vh,34px);max-width:1100px}
+  .oc .k{font-size:clamp(12px,1.2vw,16px);letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--teal);margin-bottom:6px}
+  .oc .ask{font-size:clamp(22px,min(3vw,4.4vh),44px);line-height:1.2;color:var(--muted);font-weight:500}
+  .oc .now{font-size:clamp(26px,min(3.8vw,5.4vh),56px);line-height:1.15;font-weight:900;letter-spacing:-.01em}
+  .oc .meta{display:flex;flex-wrap:wrap;gap:clamp(16px,3vw,48px);font-size:clamp(14px,min(1.5vw,2.2vh),22px);color:rgba(255,255,255,.85)}
+  .oc .meta a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(20,184,166,.4)}
+  .oc .n{font-size:clamp(12px,1.1vw,15px);color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+</style>
 </head>
 <body>
 <div class="brandbar"></div>
-<div class="count"><span id="cur">1</span> / <span id="tot">11</span></div>
+<div class="count"><span id="cur">1</span> / <span id="tot">13</span></div>
 
 <!-- 1. Title -->
 <section class="slide full on">
@@ -148,7 +157,7 @@
     <div class="badge">Corgi · Think Big · 20 to 27 October</div>
     <div class="eyebrow">Tuesday call TLDR</div>
     <h1>A second lock on every client's data, and a sharper IC X and Workspace</h1>
-    <p class="sub" style="max-width:56ch">This week: each client's data now sits behind a second, database-level lock; the IC X dashboard fills reliably; the Workspace has its new design on every tab; and the AI writing moved to the newest model generation.</p>
+    <p class="sub" style="max-width:56ch">This week: each client's data now sits behind a second, database-level lock; the IC X dashboard fills reliably; the Workspace has its new design on every tab; and chat, reports and SWOT moved to the newest model generation.</p>
     <div class="stats">
       <div class="stat b"><div class="n">155</div><div class="l">Code PRs merged</div></div>
       <div class="stat t"><div class="n">~130</div><div class="l">DUs (est.)</div></div>
@@ -158,25 +167,31 @@
   </div>
 </section>
 
-<!-- 2. Outcomes -->
+<!-- 2. Outcomes, one per slide -->
 <section class="slide full">
-  <div class="col">
-    <div class="eyebrow">Outcomes · from your own asks</div>
-    <h2>You asked for it. Now it does it.</h2>
-    <p class="lede" style="max-width:72ch">Each row is something Think Big asked for, in your words, and what War Room does today, checked live on the date shown. New this week: the Innovation Council topic labels.</p>
-    <div class="tw"><table class="ix">
-      <tr><th>You asked</th><th>Now it does</th><th>Checked live</th><th>Issue</th></tr>
-      <tr><td>IC X posts should land under the same pillar your team files them under</td><td>Every IC X post is re-classified; every post your team certified matches its label, and agreement on the test set rose from 33 to 37 of 91. <span class="state live">live</span></td><td>16 Oct</td><td><a href="https://github.com/growthpigs/alpha-war-room/issues/15286">#15286</a></td></tr>
-      <tr><td>"What reaches Outbound" looked clickable but did nothing</td><td>It picks its own client, and the list says "Show items for". <span class="state live">live</span></td><td>14 Oct</td><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13610">#13610</a></td></tr>
-      <tr><td>USA-only news for EID, with the foreign outlets you name still allowed</td><td>Every news source filters by the publisher's country, with your named exceptions. <span class="state live">live</span></td><td>13 Oct</td><td><a href="https://github.com/growthpigs/alpha-war-room/issues/12865">#12865</a></td></tr>
-      <tr><td>On the Outbound desk, act on approved and rejected rows, not only copy a link</td><td>Each row has Put back, Approve, Reject, Hold, Edit and Send. <span class="state live">live</span></td><td>13 Oct</td><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13486">#13486</a></td></tr>
-      <tr><td>Daily Clips should cover EID's whole day</td><td>Daily Clips ranks the full 24 hours, not just the newest 200 stories. <span class="state live">live</span></td><td>30 Sep</td><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13759">#13759</a></td></tr>
-      <tr><td>Filter social mentions by geography</td><td>Social has a place filter, and EID's states are set up. <span class="state live">live</span></td><td>30 Sep</td><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13628">#13628</a></td></tr>
-      <tr><td>The SWOT board stopped refreshing</td><td>New SWOT items stay on the board instead of being archived as they arrive. <span class="state live">live</span></td><td>30 Sep</td><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13574">#13574</a></td></tr>
-      <tr><td>News &amp; Media was hiding almost all of EID's articles: one keyword blocked every Bloomberg, Reuters and Forbes story</td><td>Those outlets show again. One keyword no longer blocks a whole outlet. <span class="state live">live</span></td><td>26 Sep</td><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13636">#13636</a></td></tr>
-      <tr><td>The home page shouldn't open on an 11-day-old, 65%-confidence item</td><td>The home page leads with a current item. <span class="state live">live</span></td><td>23 Sep</td><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13489">#13489</a></td></tr>
-      <tr><td>Bylines on every article, and one place to find reporters</td><td>Every article carries its byline, and there is one reporter index. <span class="state live">live</span></td><td>17 Sep</td><td><a href="https://github.com/growthpigs/alpha-war-room/issues/12644">#12644</a></td></tr>
-    </table></div>
+  <div class="col oc">
+    <div class="n">New since our 20 October report · 1 of 3</div>
+    <div><div class="k">Before</div><div class="ask">The Workspace side panel looked different on every tab</div></div>
+    <div><div class="k">Now it does</div><div class="now">One panel design across Configure, Insert, Actions and Editor, with an outline that reads the document's real headings. <span class="state live">live</span></div></div>
+    <div class="meta"><div><div class="k">Checked</div>27 Oct · live on EID</div><div><div class="k">Issue</div><a href="https://github.com/growthpigs/alpha-war-room/issues/15812">#15812</a></div></div>
+  </div>
+</section>
+
+<section class="slide full">
+  <div class="col oc">
+    <div class="n">New since our 20 October report · 2 of 3</div>
+    <div><div class="k">Before</div><div class="ask">IC X Top Performers and Ecosystem voices could come up empty</div></div>
+    <div><div class="k">Now it does</div><div class="now">Both keep reading until they find their posts, and “Last 7 days” stays 7 days across the clock change. <span class="state live">live</span></div></div>
+    <div class="meta"><div><div class="k">Checked</div>27 Oct · 8 of 8 checks, released live the same day</div><div><div class="k">Issue</div><a href="https://github.com/growthpigs/alpha-war-room/issues/15873">#15873</a></div></div>
+  </div>
+</section>
+
+<section class="slide full">
+  <div class="col oc">
+    <div class="n">New since our 20 October report · 3 of 3</div>
+    <div><div class="k">Before</div><div class="ask">Each client's data was kept apart by the app alone</div></div>
+    <div><div class="k">Now it does</div><div class="now">The database itself now refuses to show one client another client's rows. <span class="state stg">on staging</span></div></div>
+    <div class="meta"><div><div class="k">Checked</div>27 Oct · on staging, live after a week of checks</div><div><div class="k">Issue</div><a href="https://github.com/growthpigs/alpha-war-room/issues/15752">#15752</a></div></div>
   </div>
 </section>
 
@@ -190,8 +205,8 @@
       <div class="front"><div class="t">IC X dashboard fills reliably <span class="state live">live</span></div><div class="d">Top Performers and the Ecosystem voices list always find their posts; the 7-day view stays 7 days across the clock change.</div><div class="c">#15873 · #15875 · #15877</div></div>
       <div class="front"><div class="t">Workspace: new design on every tab <span class="state live">live</span></div><div class="d">Configure, Insert, Actions and Editor share the new panel design. Checked live on EID's 27 Oct Daily Clips.</div><div class="c">#15812</div></div>
       <div class="front"><div class="t">Inserting a document: one click, one insert <span class="state live">live</span></div><div class="d">A slow Documents click shows that it is loading and inserts the document once, however often it is clicked.</div><div class="c">#15886</div></div>
-      <div class="front"><div class="t">AI writing on the newest model generation <span class="state live">live</span></div><div class="d">Every writing task that used the previous generation moved to the newest one. SWOT analysis is trialling it on staging first.</div><div class="c">#15846</div></div>
-      <div class="front"><div class="t">Stopping a chat answer stops cleanly <span class="state live">live</span></div><div class="d">Pressing stop now waits for the answer to finish or stop properly, so the conversation never ends half-saved.</div><div class="c">#14535</div></div>
+      <div class="front"><div class="t">Chat, reports and SWOT on the newest model generation <span class="state live">live</span></div><div class="d">Chat, reports, SWOT and Strategic Read moved to the newest model generation.</div><div class="c">#15846</div></div>
+      <div class="front"><div class="t">Big releases ship in one approved step <span class="state live">live</span></div><div class="d">A release that carries many changes now goes live in one step with a written, approved scope, instead of being split up.</div><div class="c">#15757</div></div>
     </div>
   </div>
 </section>
@@ -229,9 +244,8 @@
       <li>Top Performers finds its on-pillar posts every time <span class="state live">live</span></li>
       <li>Ecosystem voices keeps scanning past an off-pillar first page <span class="state live">live</span></li>
       <li>"Last 7 days" stays 7 days across this weekend's clock change <span class="state live">live</span></li>
-      <li>Topic labels match your team's certified filing (see Outcomes) <span class="state live">live</span></li>
     </ul>
-    <div class="refs"><a href="https://github.com/growthpigs/alpha-war-room/issues/15873">#15873</a><a href="https://github.com/growthpigs/alpha-war-room/issues/15875">#15875</a><a href="https://github.com/growthpigs/alpha-war-room/issues/15877">#15877</a><a href="https://github.com/growthpigs/alpha-war-room/issues/15286">#15286</a></div>
+    <div class="refs"><a href="https://github.com/growthpigs/alpha-war-room/issues/15873">#15873</a><a href="https://github.com/growthpigs/alpha-war-room/issues/15875">#15875</a><a href="https://github.com/growthpigs/alpha-war-room/issues/15877">#15877</a></div>
   </div>
   <div class="col">
     <div class="stats" style="flex-direction:column">
@@ -266,10 +280,8 @@
     <h2>In plain terms</h2>
     <ul style="max-width:70ch">
       <li>Open IC X and see Top Performers and the Ecosystem voices filled every time <span class="state live">live</span></li>
-      <li>Trust that IC X posts sit under the pillar your team would file them under <span class="state live">live</span></li>
       <li>Work in a Workspace with one consistent panel, and insert a document with a single click <span class="state live">live</span></li>
-      <li>Stop a chat answer without losing the conversation <span class="state live">live</span></li>
-      <li>Read AI writing from the newest model generation <span class="state live">live</span></li>
+      <li>Get chat, reports and SWOT from the newest model generation <span class="state live">live</span></li>
       <li>Know that each client's data is separated twice, in the app and in the database <span class="state stg">on staging</span></li>
     </ul>
   </div>
@@ -353,7 +365,6 @@
       <tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/12865">#12865</a></td><td>USA-only news for EID, one publisher-country gate on every news lane</td><td>closed · met, live 13 Oct</td><td>4 follow-up PRs merged (#15775 #15673 #15663 #15662)</td></tr>
       <tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/14583">#14583</a></td><td>Report pictures sit cleanly on the page, no faint frame</td><td>closed · met</td><td>PR #15664 merged</td></tr>
       <tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/15752">#15752</a></td><td>Second lock on each client's data</td><td>on staging, a week of checks</td><td>PRs #15867 #15903 merged</td></tr>
-      <tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/15286">#15286</a></td><td>IC X pillar labels match your team's filing</td><td>closed · met, live 16 Oct</td><td>closed 25 Oct</td></tr>
     </table></div>
   </div>
 </section>
