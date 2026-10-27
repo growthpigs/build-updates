@@ -29,7 +29,7 @@
   .slide.on{display:grid;animation:in .32s ease both}
   @keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
-  .slide.full{grid-template-columns:1fr;align-content:center}
+  .slide.full{grid-template-columns:minmax(0,1fr);align-content:center}
   .slide.split{grid-template-columns:minmax(0,0.92fr) minmax(0,1.3fr);gap:clamp(22px,3.2vw,56px);align-items:center}
   .col{min-width:0}
 
