@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>War Room TLDR · 27 October to 10 November 2026</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:dark;
+    --amber:#ffd166;
+    --navy:#060b35; --blue:#2b5cf2; --teal:#14b8a6; --green:#b7fb5e; --red:#cf4a4c;
+    --muted:rgba(255,255,255,.62); --line:rgba(255,255,255,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--navy);color:#fff;font-family:Roboto,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
+
+  .slide{
+    position:fixed;inset:0;display:none;
+    padding-block:clamp(26px,4.4vw,72px) clamp(64px,6vw,96px);
+    padding-left:max(clamp(16px,5.4vw,90px), env(safe-area-inset-left,0px));
+    padding-right:max(clamp(16px,5.4vw,90px), env(safe-area-inset-right,0px));
+  }
+  .slide.on{display:grid;animation:in .32s ease both}
+  @keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  .slide.full{grid-template-columns:minmax(0,1fr);align-content:center}
+  .slide.split{grid-template-columns:minmax(0,0.92fr) minmax(0,1.3fr);gap:clamp(22px,3.2vw,56px);align-items:center}
+  .col{min-width:0}
+
+  .eyebrow{font-size:clamp(10px,1.05vw,14px);letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--teal);margin-bottom:clamp(10px,1.4vw,18px)}
+  .badge{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:clamp(10px,1vw,13px);font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:clamp(11px,1.5vw,18px)}
+  h1{font-size:clamp(32px,6vw,82px);line-height:1.02;font-weight:900;letter-spacing:-.02em}
+  h2{font-size:clamp(26px,min(4.1vw,5.5vh),58px);line-height:1.06;font-weight:900;letter-spacing:-.02em;margin-bottom:clamp(12px,1.6vw,22px)}
+  .sub{font-size:clamp(14px,1.6vw,23px);color:var(--muted);margin-top:clamp(13px,1.6vw,20px);max-width:32ch;line-height:1.4}
+  .lede{font-size:clamp(13px,min(1.42vw,2.05vh),20px);line-height:1.42;max-width:34ch;color:rgba(255,255,255,.9);margin-bottom:clamp(13px,1.7vw,22px)}
+
+  ul{list-style:none;display:flex;flex-direction:column;gap:clamp(7px,min(.95vw,1.35vh),13px)}
+  li{font-size:clamp(13px,min(1.38vw,1.98vh),20px);line-height:1.4;padding-left:clamp(16px,1.5vw,24px);position:relative;color:rgba(255,255,255,.93)}
+  li:before{content:"";position:absolute;left:0;top:.52em;width:clamp(6px,.58vw,9px);height:clamp(6px,.58vw,9px);border-radius:50%;background:var(--green)}
+  li b{font-weight:700;color:#fff}
+  .was{color:var(--muted);font-weight:400}
+  .env{display:inline-block;font-size:.72em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(20,184,166,.45);border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:.12em;white-space:nowrap}
+  .env.stg{color:var(--green);border-color:rgba(183,251,94,.4)}
+
+  figure{margin:0;width:100%}
+  .shot{
+    width:100%;display:block;border-radius:12px;border:1px solid var(--line);
+    background:#0b1450;box-shadow:0 18px 50px rgba(0,0,0,.45);
+    aspect-ratio:16/10;object-fit:cover;object-position:top center;
+  }
+  /* Two stacked wide frames, resolving to a square. Four quadrants was tried and
+     rejected: at quadrant size a UI screenshot is unreadable texture, not evidence. */
+  /* max-height caps the square: on a wide screen a 1:1 box driven by a ~1020px
+     column computes taller than the viewport and clips the lower frame off the
+     bottom of the slide. Caught by opening the deck, not by curl. A clipped
+     image still returns 200 image/jpeg. */
+  .mosaic{display:grid;grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:12px;width:100%;aspect-ratio:1/1;max-height:70vh}
+  .mosaic .shot{aspect-ratio:auto;height:100%;min-height:0}
+  .cap{font-size:clamp(10px,.98vw,13px);color:var(--muted);margin-top:10px;line-height:1.35}
+  .cap b{color:rgba(255,255,255,.85);font-weight:700}
+  .nocap{border:1px dashed var(--line);border-radius:12px;padding:clamp(16px,2vw,26px);background:rgba(255,255,255,.03)}
+  .nocap .t{font-size:clamp(12px,1.2vw,16px);font-weight:700;color:var(--teal);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+  .nocap .d{font-size:clamp(11px,min(1.1vw,1.9vh),15px);color:var(--muted);line-height:1.45}
+  .nocap .d b{color:rgba(255,255,255,.88)}
+
+  .stats{display:flex;flex-wrap:wrap;gap:clamp(16px,3vw,52px);margin-top:clamp(16px,2.2vw,30px)}
+  .stat .n{font-size:clamp(34px,5.6vw,78px);font-weight:900;line-height:1;letter-spacing:-.03em}
+  .stat .l{font-size:clamp(10px,1.02vw,14px);letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:8px;font-weight:500}
+  .stat.b .n{color:var(--blue)} .stat.t .n{color:var(--teal)} .stat.g .n{color:var(--green)}
+  /* In a split slide the three stats share a ~530px column. Letter-spaced labels
+     pushed the third stat onto its own row at 1280 and 1440 wide, which only
+     looking at the slide caught. Capped labels break onto two lines instead. */
+  .slide.split .stats{gap:clamp(14px,2vw,30px)}
+  .slide.split .stat .l{letter-spacing:.08em;max-width:11ch;line-height:1.3}
+
+  .fronts{display:grid;grid-template-columns:1fr 1fr;gap:clamp(9px,1.1vw,15px);margin-top:clamp(18px,2.2vw,30px)}
+  .front{border:1px solid var(--line);border-radius:12px;padding:clamp(12px,1.4vw,20px);background:rgba(255,255,255,.035)}
+  .front .t{font-size:clamp(13px,1.35vw,19px);font-weight:700}
+  .front .d{font-size:clamp(10px,1.02vw,14px);color:var(--muted);margin-top:6px;line-height:1.32}
+  .front .c{font-size:clamp(10px,.95vw,13px);color:var(--teal);margin-top:9px;font-weight:700;letter-spacing:.06em}
+
+  .refs{margin-top:clamp(14px,1.8vw,24px);font-size:clamp(10px,1vw,14px);color:var(--muted)}
+  .refs a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(20,184,166,.35);margin-right:13px}
+  .refs a:hover{color:#fff;border-color:#fff}
+
+  .nav{position:fixed;bottom:clamp(12px,1.7vw,24px);left:0;right:0;display:flex;align-items:center;justify-content:center;gap:13px;z-index:20}
+  .dots{display:flex;gap:6px}
+  .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.24);cursor:pointer;border:0;padding:0;transition:.18s}
+  .dot.on{background:var(--green);transform:scale(1.28)}
+  .arrow{background:rgba(255,255,255,.07);border:1px solid var(--line);color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:15px;display:grid;place-items:center;transition:.18s}
+  .arrow:hover{background:rgba(255,255,255,.18)}
+  .count{position:fixed;top:clamp(14px,1.9vw,26px);right:clamp(18px,2.6vw,40px);font-size:clamp(10px,1vw,13px);color:var(--muted);letter-spacing:.1em;z-index:20}
+  .brandbar{position:fixed;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--teal) 55%,var(--green));z-index:20}
+  .hint{position:fixed;bottom:clamp(12px,1.7vw,24px);right:clamp(18px,2.6vw,40px);font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.08em;z-index:20}
+
+  @media (max-width:900px){
+    .slide.split{grid-template-columns:1fr;align-content:center;gap:18px}
+    .slide{overflow-y:auto}
+    .lede,.sub{max-width:none}
+    .hint{display:none}
+  }
+
+  /* Portrait modifier. A narrow screenshot dropped into the 16/10 .shot box is
+     cropped to a top sliver by object-fit:cover, so the evidence disappears.
+     .tall lets the whole frame show, height-capped to the slide. */
+  .shot.tall{aspect-ratio:auto;object-fit:contain;height:auto;max-height:62vh;width:auto;max-width:100%;background:transparent;box-shadow:0 14px 40px rgba(0,0,0,.5);margin:0 auto}
+
+</style>
+
+<style>
+  .chain{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(6px,.8vw,12px);margin-top:clamp(18px,2.2vw,30px)}
+  .chain .k{border:1px solid var(--line);border-radius:10px;padding:clamp(8px,1vw,14px) clamp(10px,1.2vw,18px);background:rgba(255,255,255,.04);font-size:clamp(12px,1.25vw,18px);font-weight:700}
+  .chain .k small{display:block;font-weight:400;color:var(--muted);font-size:.72em;margin-top:3px}
+  .chain .a{color:var(--teal);font-weight:900;font-size:clamp(14px,1.4vw,20px)}
+  .state{display:inline-block;font-size:.7em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:.12em;white-space:nowrap}
+  .state.live{color:var(--green);border:1px solid rgba(183,251,94,.45)}
+  .state.wait{color:#ffd166;border:1px solid rgba(255,209,102,.45)}
+  .state.open{color:var(--muted);border:1px solid var(--line)}
+  .state.stg{color:var(--teal);border:1px solid rgba(20,184,166,.45)}
+  .state.plan{color:var(--muted);border:1px dashed rgba(255,255,255,.35)}
+  .tw{overflow-x:auto;max-width:100%}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(14px,1.8vw,24px);font-size:clamp(10px,1vw,13px);color:var(--muted)}
+  .weeks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(9px,1.1vw,15px);margin-top:clamp(14px,1.8vw,22px)}
+  .weeks .front ul{margin-top:8px}
+  .weeks .front li{font-size:clamp(11px,min(1.1vw,1.7vh),15px)}
+  @media (max-width:900px){.weeks{grid-template-columns:1fr}.fronts{grid-template-columns:1fr}}
+  :focus-visible{outline:2px solid var(--green);outline-offset:2px}
+  @media (prefers-reduced-motion:reduce){.slide.on{animation:none}}
+  table.ix{border-collapse:collapse;width:100%;font-size:clamp(10px,min(1vw,1.7vh),14px);margin-top:8px}
+  table.ix td,table.ix th{border-bottom:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}
+  table.ix th{color:var(--teal);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:.85em}
+  table.ix a{color:var(--teal);text-decoration:none}
+</style>
+<style>
+  .oc{display:flex;flex-direction:column;gap:clamp(18px,3vh,34px);max-width:1100px}
+  .oc .k{font-size:clamp(12px,1.2vw,16px);letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--teal);margin-bottom:6px}
+  .oc .ask{font-size:clamp(22px,min(3vw,4.4vh),44px);line-height:1.2;color:var(--muted);font-weight:500}
+  .oc .now{font-size:clamp(26px,min(3.8vw,5.4vh),56px);line-height:1.15;font-weight:900;letter-spacing:-.01em}
+  .oc .meta{display:flex;flex-wrap:wrap;gap:clamp(16px,3vw,48px);font-size:clamp(14px,min(1.5vw,2.2vh),22px);color:rgba(255,255,255,.85)}
+  .oc .meta a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(20,184,166,.4)}
+  .oc .n{font-size:clamp(12px,1.1vw,15px);color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="brandbar"></div>
+<div class="count"><span id="cur">1</span> / <span id="tot">17</span></div>
+
+<section class="slide full on">
+  <div class="col">
+    <div class="badge">Corgi · Think Big · 27 October to 10 November</div>
+    <div class="eyebrow">Tuesday call TLDR</div>
+    <h1>Corgi is due today: what is live, and what is left</h1>
+    <p class="sub" style="max-width:60ch">Two weeks of work since the 27 October report. The Morning Feed went live, breaking stories now explain themselves, and most of the Corgi list is checked on the live app. The rest is named on slide 11, item by item.</p>
+    <div class="stats">
+      <div class="stat b"><div class="n">632</div><div class="l">Code PRs merged</div></div>
+      <div class="stat t"><div class="n">~583</div><div class="l">DUs (est.)</div></div>
+      <div class="stat g"><div class="n">44</div><div class="l">Production releases</div></div>
+    </div>
+    <div class="legend"><span class="state live">live</span><span class="state stg">checked on staging</span><span class="state wait">partly done</span> Live means clients use it today on app.thewarroom.ai and we checked it there.</div>
+  </div>
+</section>
+
+<section class="slide full"><div class="col oc">
+  <div class="n">You asked, now it does · 1 of 8</div>
+  <div><div class="k">You asked</div><div class="ask">Breaking stories you can explain, and no alert built on a single X post</div></div>
+  <div><div class="k">Now it does</div><div class="now">Each breaking story says why it is breaking, and an X post needs news behind it before it starts one. <span class="state live">live</span></div></div>
+  <div class="meta"><div><div class="k">Checked</div>5 Nov · live, for X (Bluesky still open)</div><div><div class="k">Issue</div><a href="https://github.com/growthpigs/alpha-war-room/issues/16090">#16090</a> · <a href="https://github.com/growthpigs/alpha-war-room/issues/16787">#16787</a> · <a href="https://github.com/growthpigs/alpha-war-room/issues/16087">#16087</a></div></div>
+</div></section>
+
+<section class="slide full"><div class="col oc">
+  <div class="n">You asked, now it does · 2 of 8</div>
+  <div><div class="k">You asked</div><div class="ask">Fill EID's brief by bulletin section, with one mention per story</div></div>
+  <div><div class="k">Now it does</div><div class="now">EID's Daily Clips is grouped by the bulletin's own sections and prints each story once. <span class="state live">live</span></div></div>
+  <div class="meta"><div><div class="k">Checked</div>30 Oct · live on EID</div><div><div class="k">Issue</div><a href="https://github.com/growthpigs/alpha-war-room/issues/14305">#14305</a> · <a href="https://github.com/growthpigs/alpha-war-room/issues/13764">#13764</a></div></div>
+</div></section>
+
+<section class="slide full"><div class="col oc">
+  <div class="n">You asked, now it does · 3 of 8</div>
+  <div><div class="k">You asked</div><div class="ask">Show what Verify checked, beside the brief</div></div>
+  <div><div class="k">Now it does</div><div class="now">A Checked tab opens beside the brief: on EID's 31 October clips it read 431 links and 410 opening lines. <span class="state live">live</span></div></div>
+  <div class="meta"><div><div class="k">Checked</div>31 Oct · live on EID</div><div><div class="k">Issue</div><a href="https://github.com/growthpigs/alpha-war-room/issues/14315">#14315</a></div></div>
+</div></section>
+
+<section class="slide full"><div class="col oc">
+  <div class="n">You asked, now it does · 4 of 8</div>
+  <div><div class="k">You asked</div><div class="ask">Signing out sticks on the loading screen</div></div>
+  <div><div class="k">Now it does</div><div class="now">Sign out goes straight to the sign-in page, in the client app and in Admin. <span class="state live">live</span></div></div>
+  <div class="meta"><div><div class="k">Checked</div>31 Oct · live</div><div><div class="k">Issue</div><a href="https://github.com/growthpigs/alpha-war-room/issues/15416">#15416</a></div></div>
+</div></section>
+
+<section class="slide full"><div class="col oc">
+  <div class="n">You asked, now it does · 5 of 8</div>
+  <div><div class="k">You asked</div><div class="ask">Filter Intelligence results by platform, and show the TikTok, Bluesky, Reddit and LinkedIn posts we already store</div></div>
+  <div><div class="k">Now it does</div><div class="now">Intelligence filters by platform, and posts from all four platforms show. <span class="state live">live</span></div></div>
+  <div class="meta"><div><div class="k">Checked</div>30 Oct and 3 Nov · live on Innovation Council</div><div><div class="k">Issue</div><a href="https://github.com/growthpigs/alpha-war-room/issues/15418">#15418</a> · <a href="https://github.com/growthpigs/alpha-war-room/issues/15932">#15932</a></div></div>
+</div></section>
+
+<section class="slide full"><div class="col oc">
+  <div class="n">You asked, now it does · 6 of 8</div>
+  <div><div class="k">You asked</div><div class="ask">Where else did a reporter's article run, and what are they posting?</div></div>
+  <div><div class="k">Now it does</div><div class="now">The reporter page lists where each article was syndicated, with the reporter's LinkedIn posts beside it. <span class="state live">live</span></div></div>
+  <div class="meta"><div><div class="k">Checked</div>4 Nov · live on EID, on screen</div><div><div class="k">Issue</div><a href="https://github.com/growthpigs/alpha-war-room/issues/13496">#13496</a> · <a href="https://github.com/growthpigs/alpha-war-room/issues/13097">#13097</a></div></div>
+</div></section>
+
+<section class="slide full"><div class="col oc">
+  <div class="n">You asked, now it does · 7 of 8</div>
+  <div><div class="k">You asked</div><div class="ask">Label every dollar figure in Ad Insights: ad spend or FEC money?</div></div>
+  <div><div class="k">Now it does</div><div class="now">Every dollar figure on Ad Insights says which kind of money it is. <span class="state live">live</span></div></div>
+  <div class="meta"><div><div class="k">Checked</div>5 Nov · live on EID</div><div><div class="k">Issue</div><a href="https://github.com/growthpigs/alpha-war-room/issues/13352">#13352</a> · <a href="https://github.com/growthpigs/alpha-war-room/issues/4748">#4748</a></div></div>
+</div></section>
+
+<section class="slide full"><div class="col oc">
+  <div class="n">You asked, now it does · 8 of 8</div>
+  <div><div class="k">You asked</div><div class="ask">Strategic Read lists the wrong certified wins, and Generate Report opens an old draft</div></div>
+  <div><div class="k">Now it does</div><div class="now">Strategic Read lists the window's certified wins (29 on the 9 to 15 September read), and Generate Report opens the fresh one. <span class="state live">live</span></div></div>
+  <div class="meta"><div><div class="k">Checked</div>31 Oct · live on Innovation Council</div><div><div class="k">Issue</div><a href="https://github.com/growthpigs/alpha-war-room/issues/12997">#12997</a> · <a href="https://github.com/growthpigs/alpha-war-room/issues/13200">#13200</a></div></div>
+</div></section>
+
+<section class="slide full">
+  <div class="col">
+    <div class="eyebrow">Corgi · due Tuesday 10 November</div>
+    <h2>Where the 64 Corgi items stand today</h2>
+    <div class="stats">
+      <div class="stat g"><div class="n">31</div><div class="l">Checked live</div></div>
+      <div class="stat t"><div class="n">12</div><div class="l">Built, checked on staging</div></div>
+      <div class="stat b"><div class="n">13</div><div class="l">Partly done</div></div>
+      <div class="stat"><div class="n">8</div><div class="l">No verdict yet</div></div>
+    </div>
+    <ul style="margin-top:clamp(18px,2.4vw,32px);max-width:95ch">
+      <li><b>Checked live (31):</b> each one has a pass on app.thewarroom.ai written on its issue, dated 30 October to 5 November.</li>
+      <li><b>Built, checked on staging (12):</b> the code is released; the last check on the live app is still to run.</li>
+      <li><b>Partly done (13):</b> part of the acceptance test passes. Each open part is named on the next slide.</li>
+      <li><b>No verdict yet (8):</b> six are documents and calls Roderic owes (scope, the three cost pages, the walkthrough, the writing vote); two are the Morning Feed and its plan, live and still being validated.</li>
+    </ul>
+    <p class="cap" style="margin-top:14px">Read from each issue's own verdict line on 10 November, 13:30 UTC. One item was withdrawn (#15954). 31 + 12 + 13 + 8 = 64.</p>
+  </div>
+</section>
+
+<section class="slide full">
+  <div class="col">
+    <div class="eyebrow">Corgi · what is left</div>
+    <h2>Not finished today, by name</h2>
+    <div class="weeks">
+      <div class="front"><div class="t">Partly done <span class="state wait">13</span></div><ul>
+        <li>Bill timelines per state: <a href="https://github.com/growthpigs/alpha-war-room/issues/16089">#16089</a></li>
+        <li>Syndication signal in Workspace: <a href="https://github.com/growthpigs/alpha-war-room/issues/15919">#15919</a></li>
+        <li>Verify: bar, tracked changes (speed), elsewhere-covered, what it checked: <a href="https://github.com/growthpigs/alpha-war-room/issues/14557">#14557</a> <a href="https://github.com/growthpigs/alpha-war-room/issues/14402">#14402</a> <a href="https://github.com/growthpigs/alpha-war-room/issues/13909">#13909</a> <a href="https://github.com/growthpigs/alpha-war-room/issues/13765">#13765</a></li>
+        <li>Morning checks on every AI output: <a href="https://github.com/growthpigs/alpha-war-room/issues/13907">#13907</a></li>
+        <li>EID gold standard scoring: <a href="https://github.com/growthpigs/alpha-war-room/issues/13794">#13794</a></li>
+        <li>Narrative with news and Google AI results (data passes, board look open): <a href="https://github.com/growthpigs/alpha-war-room/issues/12781">#12781</a> <a href="https://github.com/growthpigs/alpha-war-room/issues/10452">#10452</a></li>
+        <li>Colour flash on load, publication page, Outbound note: <a href="https://github.com/growthpigs/alpha-war-room/issues/15417">#15417</a> <a href="https://github.com/growthpigs/alpha-war-room/issues/13354">#13354</a> <a href="https://github.com/growthpigs/alpha-war-room/issues/13281">#13281</a></li>
+      </ul></div>
+      <div class="front"><div class="t">Built, live check to run <span class="state stg">12</span></div><ul>
+        <li>Daily Clips export as data: <a href="https://github.com/growthpigs/alpha-war-room/issues/13324">#13324</a></li>
+        <li>Verify per-article status, outlet match, one run per document: <a href="https://github.com/growthpigs/alpha-war-room/issues/13323">#13323</a> <a href="https://github.com/growthpigs/alpha-war-room/issues/13982">#13982</a> <a href="https://github.com/growthpigs/alpha-war-room/issues/14560">#14560</a></li>
+        <li>Track an advertiser from the page: <a href="https://github.com/growthpigs/alpha-war-room/issues/13350">#13350</a></li>
+        <li>The people-only work queue: <a href="https://github.com/growthpigs/alpha-war-room/issues/13482">#13482</a></li>
+        <li>Chat sources, Strategic Read edit tab: <a href="https://github.com/growthpigs/alpha-war-room/issues/12942">#12942</a> <a href="https://github.com/growthpigs/alpha-war-room/issues/13232">#13232</a></li>
+        <li>Outbound flag and social drafts: <a href="https://github.com/growthpigs/alpha-war-room/issues/13908">#13908</a> <a href="https://github.com/growthpigs/alpha-war-room/issues/13775">#13775</a></li>
+        <li>Reporter X feed, editor tabs: <a href="https://github.com/growthpigs/alpha-war-room/issues/13495">#13495</a> <a href="https://github.com/growthpigs/alpha-war-room/issues/15950">#15950</a></li>
+      </ul></div>
+      <div class="front"><div class="t">Roderic owes <span class="state open">6</span></div><ul>
+        <li>Project scope with contingencies: <a href="https://github.com/growthpigs/alpha-war-room/issues/15419">#15419</a></li>
+        <li>CI bill July to October for Lewis: <a href="https://github.com/growthpigs/alpha-war-room/issues/15840">#15840</a></li>
+        <li>Cost review and proposed cuts: <a href="https://github.com/growthpigs/alpha-war-room/issues/15841">#15841</a></li>
+        <li>Large Mac against the CI bill: <a href="https://github.com/growthpigs/alpha-war-room/issues/15843">#15843</a></li>
+        <li>Marketing and Pulse Bridge walkthrough: <a href="https://github.com/growthpigs/alpha-war-room/issues/15952">#15952</a></li>
+        <li>Writing standard vote for the team: <a href="https://github.com/growthpigs/alpha-war-room/issues/13497">#13497</a></li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide full">
+  <div class="col">
+    <div class="eyebrow">Front 1 · the Morning Feed <span class="state live">live</span> <span class="state wait">still validating</span></div>
+    <h2>The Morning Feed explains why a story matters</h2>
+    <ul style="max-width:80ch">
+      <li><b>Evidence panels on an expanded story:</b> who else is lobbying, the money behind it, the whip count from recorded votes, what members said then and say now, the rules paper trail, who is in the room at hearings, related federal lawsuits. A panel shows only what its sources support.</li>
+      <li><b>Tracked advertisers' live Meta ads</b> appear on stories about the issue those ads name.</li>
+      <li><b>It follows each client's setup:</b> US-only clients get US-subject stories; a client can watch 25 X accounts, up from 10.</li>
+      <li><b>Its own new design.</b></li>
+    </ul>
+    <div class="nocap" style="margin-top:18px;max-width:80ch"><div class="t">Shown live on the call</div><div class="d">No screenshot on this slide: open today's Morning Feed on the call and expand a story. It went live on 9 November and its acceptance check is not finished, so it is not counted as met.</div></div>
+    <div class="refs"><a href="https://github.com/growthpigs/alpha-war-room/issues/16088">#16088</a><a href="https://github.com/growthpigs/alpha-war-room/issues/17031">#17031</a><a href="https://github.com/growthpigs/alpha-war-room/issues/16172">#16172</a></div>
+  </div>
+</section>
+
+<section class="slide full">
+  <div class="col">
+    <div class="eyebrow">Front 2 · Daily Clips and Verify for EID</div>
+    <h2>The brief reads like EID's bulletin, and shows its checking</h2>
+    <ul style="max-width:80ch">
+      <li><b>Bulletin sections, one mention per story</b> <span class="state live">live</span> <a href="https://github.com/growthpigs/alpha-war-room/issues/14305">#14305</a> <a href="https://github.com/growthpigs/alpha-war-room/issues/13764">#13764</a></li>
+      <li><b>A wire story prints once</b>, even when several outlets carry it <span class="state live">live</span></li>
+      <li><b>Checked tab beside the brief</b> <span class="state live">live</span> <a href="https://github.com/growthpigs/alpha-war-room/issues/14315">#14315</a></li>
+      <li><b>Export as data</b> for Constant Contact and Claude <span class="state stg">checked on staging</span> <a href="https://github.com/growthpigs/alpha-war-room/issues/13324">#13324</a></li>
+      <li><b>Each article's status with Retry</b> <span class="state stg">checked on staging</span> <a href="https://github.com/growthpigs/alpha-war-room/issues/13323">#13323</a></li>
+      <li><b>Catch rate against EID's own Morning News</b>, the yardstick for "does the brief do what we promise" <span class="state wait">in progress</span> <a href="https://github.com/growthpigs/alpha-war-room/issues/16642">#16642</a> <a href="https://github.com/growthpigs/alpha-war-room/issues/13794">#13794</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide full">
+  <div class="col">
+    <div class="eyebrow">Front 3 · how we release, and what it costs</div>
+    <h2>Fast days, one release a night, a smaller CI bill</h2>
+    <ul style="max-width:80ch">
+      <li><b>One release a night.</b> Work goes to staging all day; what was approved that evening goes live overnight. 44 production releases in the two weeks. <span class="state wait">in progress</span> <a href="https://github.com/growthpigs/alpha-war-room/issues/17046">#17046</a></li>
+      <li><b>The CI bill is being cut job by job</b>, starting with the largest. This feeds the cost pages Lewis asked for. <span class="state wait">in progress</span> <a href="https://github.com/growthpigs/alpha-war-room/issues/17236">#17236</a> <a href="https://github.com/growthpigs/alpha-war-room/issues/15840">#15840</a></li>
+      <li><b>The Morning Feed job reads each client as that client</b>, through the database's own per-client lock. <a href="https://github.com/growthpigs/alpha-war-room/issues/17031">#17031</a> <a href="https://github.com/growthpigs/alpha-war-room/issues/15752">#15752</a></li>
+      <li><b>The EID intake breaker no longer trips every few hours</b> <span class="state live">live</span> <a href="https://github.com/growthpigs/alpha-war-room/issues/16086">#16086</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide full">
+  <div class="col">
+    <div class="eyebrow">What your users can do now</div>
+    <h2>New on app.thewarroom.ai since 27 October</h2>
+    <ul style="max-width:80ch">
+      <li>Open the Morning Feed, expand a story and read the evidence behind it.</li>
+      <li>See why a story is breaking, in one line, before acting on it.</li>
+      <li>Read EID's Daily Clips in the bulletin's own sections, with the Checked tab beside it.</li>
+      <li>On a reporter's page, see where an article ran and what the reporter posts on LinkedIn.</li>
+      <li>Filter Intelligence by platform, and see TikTok, Bluesky, Reddit and LinkedIn posts.</li>
+      <li>Read Ad Insights knowing which dollars are ad spend and which are FEC money.</li>
+      <li>Sign out and land on the sign-in page at once.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide full">
+  <div class="col">
+    <div class="eyebrow">What is next</div>
+    <h2>Close Corgi's open items, then Dushound by 30 November</h2>
+    <div class="fronts">
+      <div class="front"><div class="t">Run the 12 live checks</div><div class="d">The code is released. Each needs its acceptance test run on the live app and the result written on its issue.</div></div>
+      <div class="front"><div class="t">Finish the 13 partly done</div><div class="d">Verify speed, bill timelines, the Narrative board look, the syndication signal, and the EID gold standard score.</div></div>
+      <div class="front"><div class="t">Roderic's six documents and calls</div><div class="d">Project scope, the three cost pages for Lewis, the walkthrough call and the writing vote.</div></div>
+      <div class="front"><div class="t">Dushound: continuity and handover</div><div class="d">Runbooks, feature and incident documents, accounts. Milestone due 30 November. <a href="https://github.com/growthpigs/alpha-war-room/issues/15848" style="color:var(--teal)">#15848</a></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide full">
+  <div class="col">
+    <div class="eyebrow">Close</div>
+    <h1 style="font-size:clamp(28px,4.6vw,64px)">31 checked live, 12 one check away, 21 still open, each with a name.</h1>
+    <p class="sub" style="max-width:60ch">Pick any item on slide 11 and we open its issue and its acceptance test together.</p>
+  </div>
+</section>
+
+<section class="slide full" style="align-content:start;overflow-y:auto">
+  <div class="col">
+    <div class="eyebrow">Index · 27 October to 10 November</div>
+    <h2 style="font-size:clamp(20px,2.6vw,34px)">The epics and every Corgi issue that moved</h2>
+    <p class="cap">Running epic: <a style="color:var(--teal)" href="https://github.com/growthpigs/alpha-war-room/issues/13326">#13326 Corgi</a> (milestone 62, due 10 November) · Previous epic: <a style="color:var(--teal)" href="https://github.com/growthpigs/alpha-war-room/issues/12117">#12117 Beagle</a> · Next: <a style="color:var(--teal)" href="https://github.com/growthpigs/alpha-war-room/issues/15848">#15848 Dushound</a> · tree 71 · checked 71 · moved this week 60 · fetch-failed 0 · reconciles 71 of 71</p>
+    <div class="tw"><table class="ix"><tr><th>Issue</th><th>Title</th><th>State · verdict</th><th>Moved because</th></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/4748">#4748</a></td><td>[Audit] Ad Insights punch list v2 (2026-09-10): Kalshi test-account binding, hon</td><td>open · PASS (2026-11-02)</td><td>merged #16925 #16785; verdict dated 2026-11-02</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/10452">#10452</a></td><td>[BRIEF] Narrative — finish it platform-wide (every tenant) + wire it into the ag</td><td>open · PASS (2026-11-04)</td><td>merged #16519 #16432 #16346; verdict dated 2026-11-04</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/12781">#12781</a></td><td>[Beagle][Narrative] Narrative ignores the Intelligence page: add news to the sco</td><td>open · PASS (2026-11-04) · label verdict:not-done</td><td>merged #16452 #16435 #16384 #16336 #16164 #16035; verdict dated 2026-11-04</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/12865">#12865</a></td><td>[Beagle][geo][EID] USA-only news: one publisher-country gate on every news lane,</td><td>closed · MET (2026-10-13) · label verdict:met</td><td>merged #17017 #16724</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/12867">#12867</a></td><td>[principle] Caveats appear where and when they apply, never as small print</td><td>open · PASS (2026-11-04)</td><td>merged #16113 #16093; verdict dated 2026-11-04</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/12928">#12928</a></td><td>[Beagle][P1] Sent Daily Clips / SWOT leave no durable export row (document_expor</td><td>closed · PASS (2026-09-30) · label verdict:met</td><td>merged #16671</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/12942">#12942</a></td><td>[P3][chat] The Sources list shows a URL path slug as the publisher (&quot;Us Election</td><td>open · PASS (2026-11-04)</td><td>merged #16664 #16391 #16322 #16084 #16064; verdict dated 2026-11-04</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/12997">#12997</a></td><td>[DEFCON 1][ic-xcom] Strategic Read &#x27;Certified wins this window&#x27; lists the wrong </td><td>closed · PASS (2026-10-31) · label verdict:met</td><td>closed 2026-11-04; verdict dated 2026-10-31</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13042">#13042</a></td><td>[P3][chat] The Sources author slot sometimes shows the publication&#x27;s own name (&quot;</td><td>open · PASS (2026-11-04)</td><td>merged #16391 #16322 #16130 #16124 #16084 #16064; verdict dated 2026-11-04</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13097">#13097</a></td><td>[#12861 · sub] Reporter and outlet LinkedIn posts through an Apify actor, costed</td><td>open · PASS (2026-11-04) · label verdict:partial</td><td>merged #16841 #16460 #16400 #16388 #16302 #16119 #16108 #16069; verdict dated 2026-11-04</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13200">#13200</a></td><td>[ic-xcom] Generate Report opens the stale pre-fix Strategic Read draft: an edito</td><td>open · PASS (2026-10-31) · label verdict:partial</td><td>merged #16826 #16061; verdict dated 2026-10-31</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13232">#13232</a></td><td>[ic-xcom] A preserved analyst edit should open the new Strategic Read in its own</td><td>open · PASS (2026-11-04)</td><td>merged #16876 #16826 #16177 #16061; verdict dated 2026-11-04</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13272">#13272</a></td><td>[Corgi][P1] document_exports must store sent content + sha256 (Seat D score need</td><td>open · PASS (2026-10-30) · label verdict:not-done</td><td>merged #16671 #16104; verdict dated 2026-10-30</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13281">#13281</a></td><td>[#12109 · package 9] Outbound desk: optional Approve note + reliable full-body r</td><td>open · PARTIAL (2026-11-01)</td><td>verdict dated 2026-11-01</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13323">#13323</a></td><td>[Corgi][Daily Clips] Verify shows each article&#x27;s status, with Retry and a hand-o</td><td>open · PASS (2026-11-05) · label verdict:partial</td><td>merged #16800 #16125; verdict dated 2026-11-05</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13324">#13324</a></td><td>[Corgi][Daily Clips] Export as data for Constant Contact and Claude, not branded</td><td>open · PASS (2026-11-04) · label verdict:not-done</td><td>merged #16992 #16823 #16781 #16671 #16104; verdict dated 2026-11-04</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13350">#13350</a></td><td>[Beagle][ad-insights] Track advertiser from the page: the plus adds it for the c</td><td>open · PASS (2026-11-05) · label verdict:not-done</td><td>merged #16798 #16039; verdict dated 2026-11-05</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13352">#13352</a></td><td>[Beagle][ad-insights] Label every dollar figure: ad spend vs FEC money, with its</td><td>open · PASS (2026-11-05) · label verdict:not-done</td><td>merged #16942 #16934 #16925 #16785 #16098 #16041; verdict dated 2026-11-05</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13354">#13354</a></td><td>[Beagle][Publication] /publication-intelligence renders the delivered Watchtower</td><td>open · PARTIAL (2026-11-02) · label verdict:partial</td><td>merged #16455 #16100; verdict dated 2026-11-02</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13410">#13410</a></td><td>[P1][narrative][EID] AI Score is blank five days in seven because &#x27;mixed&#x27; scores</td><td>closed · PASS (2026-10-30) · label verdict:met</td><td>closed 2026-11-04; verdict dated 2026-10-30</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13479">#13479</a></td><td>[Corgi][Reports] Blind A/B: today&#x27;s report prompts against the writing-standard </td><td>closed · PASS (2026-11-01) · label verdict:met</td><td>merged #16947 #16353 #16327 #16310; closed 2026-11-04; verdict dated 2026-11-01</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13482">#13482</a></td><td>[Beagle] A queue of work only people can do, for the Think Big team</td><td>open · PASS (2026-11-05) · label verdict:not-done</td><td>merged #16802 #16778 #16413 #16372 #16370 #16358; verdict dated 2026-11-05</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13484">#13484</a></td><td>[Call 2026-09-22] Think Big: EID is the proof, the feedback loop, and a writing </td><td>open · PASS (2026-10-30)</td><td>verdict dated 2026-10-30</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13490">#13490</a></td><td>[#12101 · slice 8] One search, one sort row and one card view across Ownership, </td><td>open · PASS (2026-10-31)</td><td>verdict dated 2026-10-31</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13495">#13495</a></td><td>[Corgi][Watchtower] Reporter detail: an X feed on the right, history on the left</td><td>open · ON (2026-11-01) · label verdict:not-done</td><td>merged #16630 #16600 #16572 #16302; verdict dated 2026-11-01</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13496">#13496</a></td><td>[Corgi][Watchtower] Where else a reporter&#x27;s article ran: syndication, republicat</td><td>closed · PASS (2026-11-04) · label verdict:met</td><td>merged #17010 #16463 #16302 #16214 #16209 #16201 #16191 #16161 #16157 #16134; closed 2026-</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13763">#13763</a></td><td>[Daily Clips][P1] Briefs got thinner on 25 Sep: gpt-4o writes 18 to 27 bullets w</td><td>closed · PASS (2026-10-30)</td><td>merged #16307; verdict dated 2026-10-30</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13764">#13764</a></td><td>[Daily Clips][EID] Format: one mention per story, grouped by EID&#x27;s geographic se</td><td>open · PASS (2026-10-30) · label verdict:met</td><td>verdict dated 2026-10-30</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13765">#13765</a></td><td>[Daily Clips] Verify shows what it checked (highlight) and a completeness count </td><td>open · PARTIAL (2026-10-31)</td><td>merged #16404 #16307 #16081 #15917; verdict dated 2026-10-31</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13767">#13767</a></td><td>[#12109 · Outbound desk] Archive tab: Archive on every row, Delete only in Archi</td><td>closed · PASS (2026-11-02) · label verdict:met</td><td>merged #16329; closed 2026-11-04; verdict dated 2026-11-02</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13768">#13768</a></td><td>[Corgi][ICX] Search box on the handles filter</td><td>closed · PASS (2026-10-31) · label verdict:met</td><td>closed 2026-11-04; verdict dated 2026-10-31</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13775">#13775</a></td><td>[Content][EID] Social post options and blog drafts built from the day&#x27;s brief, h</td><td>open · PASS (2026-11-01) · label verdict:blocked</td><td>merged #16777 #16401; verdict dated 2026-11-01</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13794">#13794</a></td><td>[EID] Gold standard: EID Morning News 25 Sep 2026, scored story by story against</td><td>open · PARTIAL (2026-11-04)</td><td>merged #16736 #16706 #16301; verdict dated 2026-11-04</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13907">#13907</a></td><td>[EID][trust] Morning routines check every AI output before the team opens War Ro</td><td>open · PARTIAL (2026-11-02) · label verdict:partial</td><td>merged #16809 #16553 #16163 #16097 #16060; verdict dated 2026-11-02</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13908">#13908</a></td><td>[Outbound] Flag an important story or tenant: it goes first and gets a second ch</td><td>open · PASS · label verdict:blocked</td><td>merged #16777 #16404 #16372 #16360 #16329</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13909">#13909</a></td><td>[Daily Clips] Verify also lists stories covered elsewhere that War Room does not</td><td>open · PARTIAL (2026-11-02) · label verdict:partial</td><td>merged #16668 #16404 #16360 #16329 #16304; verdict dated 2026-11-02</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13982">#13982</a></td><td>Verify passes a source line whose outlet name does not match its link</td><td>open · PASS (2026-11-04)</td><td>merged #16777 #16294 #16126 #16125 #16081; verdict dated 2026-11-04</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/14267">#14267</a></td><td>[EID][staging] Staging mirrors production&#x27;s active tenants (config only): EID fi</td><td>closed · PASS (2026-10-31) · label verdict:met</td><td>merged #16633; closed 2026-11-04; verdict dated 2026-10-31</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/14305">#14305</a></td><td>[EID][Daily Clips] Fill the brief by bulletin section (National, International, </td><td>open · PASS (2026-10-30) · label verdict:not-done</td><td>verdict dated 2026-10-30</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/14315">#14315</a></td><td>[Verify] Results in a Checked tab beside the brief: Verify fixes what it can, ye</td><td>open · PASS (2026-10-31)</td><td>merged #16125; verdict dated 2026-10-31</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/14365">#14365</a></td><td>[EID] Ask Agent Questions empty on production: agent chat was never enabled for </td><td>closed · PASS (2026-10-30)</td><td>verdict dated 2026-10-30</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/14402">#14402</a></td><td>[Verify] Findings as tracked changes in the brief, driven from the Checked tab (</td><td>open · PARTIAL (2026-11-04) · label verdict:partial</td><td>merged #16814 #16777 #16465 #16446 #16408 #16403 #16398 #16395 #16393 #16390 #16313 #15917</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/14557">#14557</a></td><td>[Verify] Workspace Verify bar (row 2), VERIFIED tab rename and resizable panel d</td><td>open · PARTIAL (2026-11-01)</td><td>merged #16053; verdict dated 2026-11-01</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/14560">#14560</a></td><td>[Verify] One run per document across users: startedBy, active-run read, run time</td><td>open · PASS (2026-11-04)</td><td>merged #16777 #16356 #16095; verdict dated 2026-11-04</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/15416">#15416</a></td><td>[Corgi] Signing out (client app and Admin) sticks on the loading screen</td><td>open · PASS (2026-10-31)</td><td>merged #15941; verdict dated 2026-10-31</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/15417">#15417</a></td><td>[Corgi][ui] Old background colour flashes while the app loads</td><td>open · PARTIAL (2026-11-02)</td><td>merged #16457 #15992 #15941; verdict dated 2026-11-02</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/15418">#15418</a></td><td>[Corgi][intelligence] Filter results by platform in the Intelligence tool</td><td>closed · PASS (2026-10-30) · label verdict:met</td><td>merged #15980 #15941; closed 2026-11-04; verdict dated 2026-10-30</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/15919">#15919</a></td><td>[Corgi][Workspace] Signals › Syndication: show where each story in the report al</td><td>open · PARTIAL (2026-11-04)</td><td>merged #16749 #16308 #16226 #16161 #16134 #16071 #15967 #15955 #15931; verdict dated 2026-</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/15932">#15932</a></td><td>[Corgi][ingest] TikTok, Bluesky, Reddit and LinkedIn posts are stored as &#x27;other&#x27;</td><td>closed · PASS (2026-11-03) · label verdict:met</td><td>merged #16507 #16506 #16469 #16362 #15980 #15941; closed 2026-11-04; verdict dated 2026-11</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/15950">#15950</a></td><td>[Corgi][Workspace] Grouped editor tabs break at some widths</td><td>open · PASS (2026-10-31)</td><td>merged #16403 #16398 #16335 #16066; verdict dated 2026-10-31</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/15954">#15954</a></td><td>[auth] Sign-out on staging: server session ends; the founder sign-in (#12703) re</td><td>closed · none</td><td>closed 2026-10-27</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/16086">#16086</a></td><td>[P1][Jev intake] Breaker trips on EID every few hours (28 trips in 8 days), so i</td><td>open · PASS (2026-11-04)</td><td>merged #16120; verdict dated 2026-11-04</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/16087">#16087</a></td><td>Breaking stories from named signals (syndication, reach, climb, escalation), eac</td><td>open · PASS (2026-11-04)</td><td>merged #16851 #16783 #16571 #16550 #16301 #16168 #16155; verdict dated 2026-11-04</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/16088">#16088</a></td><td>The Morning Feed: a daily link for Roderic, Jackson, Carlos, Andrew and Aaron, r</td><td>open · none</td><td>merged #16999 #16915 #16667 #16570 #16541 #16472 #16424 #16416 #16413 #16406 #16387 #16378</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/16089">#16089</a></td><td>Bill timelines for each client&#x27;s states plus federal: next vote dates as alerts,</td><td>open · PARTIAL (2026-11-04)</td><td>merged #16747 #16587 #16586 #16531 #16530 #16519 #16485 #16472 #16335 #16101; verdict date</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/16090">#16090</a></td><td>Think Big call 30 Oct: breaking stories you can explain, read in one click (brea</td><td>open · PASS (2026-11-05)</td><td>merged #16783 #16301; verdict dated 2026-11-05</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/16114">#16114</a></td><td>X dashboard copy says Innovation Council to every tenant: 108 hard-coded lines (</td><td>closed · PASS (2026-11-01) · label verdict:met</td><td>merged #16374 #16302 #16189; closed 2026-11-04; verdict dated 2026-11-01</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/16172">#16172</a></td><td>Save the product: the morning email, CTO Sweep, stay signed in, curation — Roder</td><td>open · none</td><td>merged #17186 #17103 #17076 #17029 #17022 #17017 #16928 #16896 #16570 #16546 #16541 #16369</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/16787">#16787</a></td><td>Breaking drafts start from a single X post with no news behind it (12 of 15 held</td><td>open · PASS (2026-11-05)</td><td>merged #16914 #16799 #16783; verdict dated 2026-11-05</td></tr>
+<tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/16821">#16821</a></td><td>Today&#x27;s IC Daily Clips saved copy has no job, so Verify is unavailable after an </td><td>open · PASS (2026-11-05)</td><td>merged #16823; verdict dated 2026-11-05</td></tr>
+    </table></div>
+  </div>
+</section>
+
+<div class="nav">
+  <button class="arrow" id="prev" aria-label="Previous slide">&#8249;</button>
+  <div class="dots" id="dots"></div>
+  <button class="arrow" id="next" aria-label="Next slide">&#8250;</button>
+</div>
+<div class="hint">← → to navigate · F for full screen</div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var dots = document.getElementById('dots');
+  var cur = 0;
+  document.getElementById('tot').textContent = slides.length;
+  slides.forEach(function(_, i){
+    var b = document.createElement('button');
+    b.className = 'dot' + (i === 0 ? ' on' : '');
+    b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    b.addEventListener('click', function(){ go(i); });
+    dots.appendChild(b);
+  });
+  function go(n){
+    cur = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function(s, i){ s.classList.toggle('on', i === cur); });
+    Array.prototype.forEach.call(dots.children, function(d, i){ d.classList.toggle('on', i === cur); });
+    document.getElementById('cur').textContent = cur + 1;
+  }
+  document.getElementById('next').addEventListener('click', function(){ go(cur + 1); });
+  document.getElementById('prev').addEventListener('click', function(){ go(cur - 1); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(cur + 1); }
+    if (e.key === 'ArrowLeft'  || e.key === 'PageUp') { e.preventDefault(); go(cur - 1); }
+    if (e.key === 'Home') { go(0); }
+    if (e.key === 'End')  { go(slides.length - 1); }
+    if (e.key === 'f' || e.key === 'F') {
+      if (document.fullscreenElement) { document.exitFullscreen(); }
+      else if (document.documentElement.requestFullscreen) { document.documentElement.requestFullscreen(); }
+    }
+  });
+})();
+</script>
+</body>
+</html>
