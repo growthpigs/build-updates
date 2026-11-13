@@ -224,7 +224,7 @@
     <div class="eyebrow">Front 2 · the Knowledge Base drawer <span class="state live">live</span></div>
     <h2>Every client can open its Knowledge Base from the top bar</h2>
     <ul style="max-width:80ch">
-      <li><b>Switched on for all 16 production clients</b> on 13 November. It opens from the book icon in the top bar and reads each document in place. <span class="state live">live</span> <a href="https://github.com/growthpigs/alpha-war-room/issues/17621">#17621</a></li>
+      <li><b>Switched on for every client account</b> on 13 November. It opens from the book icon in the top bar and reads each document in place. <span class="state live">live</span> <a href="https://github.com/growthpigs/alpha-war-room/issues/17621">#17621</a></li>
       <li><b>Three shelves:</b> what you gave us, the public record (bills, hearings, court cases), and the connections we make. The public record shelf is filling on staging first. <span class="state stg">on staging</span></li>
       <li><b>A safety problem found in the release review:</b> if staff switched client while an upload batch was running, the remaining files could follow the new client. Each batch now keeps the client it started for; the fix is live since this morning's 08:24 UTC release. <span class="state live">live</span> <a href="https://github.com/growthpigs/alpha-war-room/issues/17783">#17783</a></li>
       <li><b>Original files are kept</b> (PDFs open in their own reader) <span class="state stg">on staging</span>; on production the drawer shows the text of each file until that is switched on.</li>
@@ -248,10 +248,10 @@
 
 <section class="slide full">
   <div class="col">
-    <div class="eyebrow">Front 4 · found by us, being fixed <span class="state wait">being fixed</span></div>
+    <div class="eyebrow">Front 4 · found by us, fix merged <span class="state wait">not live yet</span></div>
     <h2>A problem we found this week</h2>
     <div class="fronts">
-      <div class="front"><div class="t">EID's energy prediction markets stopped updating in mid-October</div><div class="d">The market fetch keeps only the first 35 of about 300 matching series. In early October a batch of new daily state gas-price series took those places, and EID's energy series fell out one by one from 12 to 14 October. Today, of 293 open energy markets for EID, only 3 big ones have a fresh price. The fix is being built now; until it ships, the feed shows fewer energy markets. <a href="https://github.com/growthpigs/alpha-war-room/issues/17852" style="color:var(--teal)">#17852</a></div></div>
+      <div class="front"><div class="t">EID's energy prediction markets stopped updating in mid-October</div><div class="d">The market fetch keeps only the first 35 of about 300 matching series. In early October a batch of new daily state gas-price series took those places, and EID's energy series fell out one by one from 12 to 14 October. Today, of 293 open energy markets for EID, only 3 big ones have a fresh price. The fix merged today: the fetch rotates through every series EID holds, stalest first, and keeps 10 places for new ones. <span class="state stg">merged, not live yet</span> It reaches the live app with a nightly release; we check EID's prices on 14 November. <a href="https://github.com/growthpigs/alpha-war-room/pull/17865" style="color:var(--teal)">PR #17865</a> <a href="https://github.com/growthpigs/alpha-war-room/issues/17852" style="color:var(--teal)">#17852</a></div></div>
     </div>
   </div>
 </section>
@@ -287,7 +287,7 @@
     <div class="eyebrow">What is next</div>
     <h2>Next week</h2>
     <div class="fronts">
-      <div class="front"><div class="t">Energy markets back for EID</div><div class="d">Ship the fetch fix and check that EID's energy markets carry fresh prices again. <a href="https://github.com/growthpigs/alpha-war-room/issues/17852" style="color:var(--teal)">#17852</a></div></div>
+      <div class="front"><div class="t">Energy markets back for EID</div><div class="d">The fix is merged; once a nightly release carries it, check that EID's energy markets carry fresh prices again. <a href="https://github.com/growthpigs/alpha-war-room/issues/17852" style="color:var(--teal)">#17852</a></div></div>
       <div class="front"><div class="t">Card shapes and photos</div><div class="d">On staging today; reaches production with a nightly release. <a href="https://github.com/growthpigs/alpha-war-room/pull/17856" style="color:var(--teal)">PR #17856</a></div></div>
       <div class="front"><div class="t">Knowledge Base shelves</div><div class="d">The public record shelf and kept originals on production, and a first add-and-remove test there. <a href="https://github.com/growthpigs/alpha-war-room/issues/17621" style="color:var(--teal)">#17621</a></div></div>
       <div class="front"><div class="t">Dushound: continuity and handover</div><div class="d">Runbooks, feature documents and the account register. Due 30 November. <a href="https://github.com/growthpigs/alpha-war-room/issues/15848" style="color:var(--teal)">#15848</a></div></div>
@@ -298,7 +298,7 @@
 <section class="slide full">
   <div class="col">
     <div class="eyebrow">Close</div>
-    <h1 style="font-size:clamp(28px,4.6vw,64px)">Five asks checked live, the feed and the Knowledge Base on for every client, one problem named and being fixed.</h1>
+    <h1 style="font-size:clamp(28px,4.6vw,64px)">Five asks checked live, the feed and the Knowledge Base on for every client, one problem found and its fix merged.</h1>
     <p class="sub" style="max-width:60ch">Pick any slide and we open its issue together.</p>
   </div>
 </section>
