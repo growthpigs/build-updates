@@ -159,7 +159,7 @@
     <div class="badge">Think Big · 10 to 13 November</div>
     <div class="eyebrow">Weekly TLDR</div>
     <h1>The morning feed writes a take on every story, and every client has the Knowledge Base</h1>
-    <p class="sub" style="max-width:60ch">Since the 10 November report. Production now releases itself every night once its checks pass, so fixes reach you the next morning. Two problems we found ourselves are on slide 10, with what is being done.</p>
+    <p class="sub" style="max-width:60ch">Since the 10 November report. Production now releases itself every night once its checks pass, so fixes reach you the next morning. A problem we found ourselves is on slide 10, with what is being done.</p>
     <div class="stats">
       <div class="stat b"><div class="n">292</div><div class="l">Code PRs merged</div></div>
       <div class="stat t"><div class="n">~258</div><div class="l">DUs (est.)</div></div>
@@ -213,7 +213,7 @@
       <li><b>A take is saved only when the card shows it,</b> so what we store is what you read. <span class="state live">live</span> <a href="https://github.com/growthpigs/alpha-war-room/pull/17780">PR #17780</a></li>
       <li><b>Every link on a card opens that card's own evidence panel.</b> <span class="state live">live</span> <a href="https://github.com/growthpigs/alpha-war-room/pull/17797">PR #17797</a></li>
       <li><b>Card shapes and photos:</b> each card uses whatever parts it has, and more cards carry a photo. Merged today, <span class="state stg">on staging</span>; it reaches you with a nightly release. <a href="https://github.com/growthpigs/alpha-war-room/pull/17856">PR #17856</a></li>
-      <li><b>Not on yet:</b> the editor's pick that rebuilds through the day. We scored it against EID's own bulletin for 11 to 13 November and are still deciding how to count one story both carried. <a href="https://github.com/growthpigs/alpha-war-room/issues/17643">#17643</a></li>
+      <li><b>Not on yet:</b> the editor's pick that rebuilds through the day. Scored against EID's own bulletin with a corrected scorer, it fell one story short of the stored feed on 13 November, so it stays off. <a href="https://github.com/growthpigs/alpha-war-room/issues/17643">#17643</a> <a href="https://github.com/growthpigs/alpha-war-room/pull/17862">PR #17862</a></li>
     </ul>
     <div class="refs"><a href="https://github.com/growthpigs/alpha-war-room/issues/17360">#17360</a><a href="https://github.com/growthpigs/alpha-war-room/issues/17643">#17643</a><a href="https://github.com/growthpigs/alpha-war-room/issues/17645">#17645</a></div>
   </div>
@@ -249,10 +249,9 @@
 <section class="slide full">
   <div class="col">
     <div class="eyebrow">Front 4 · found by us, being fixed <span class="state wait">being fixed</span></div>
-    <h2>Two problems we found this week</h2>
+    <h2>A problem we found this week</h2>
     <div class="fronts">
       <div class="front"><div class="t">EID's energy prediction markets stopped updating in mid-October</div><div class="d">The market fetch keeps only the first 35 of about 300 matching series. In early October a batch of new daily state gas-price series took those places, and EID's energy series fell out one by one from 12 to 14 October. Today, of 293 open energy markets for EID, only 3 big ones have a fresh price. The fix is being built now; until it ships, the feed shows fewer energy markets. <a href="https://github.com/growthpigs/alpha-war-room/issues/17852" style="color:var(--teal)">#17852</a></div></div>
-      <div class="front"><div class="t">One feed headline showed a raw character code</div><div class="d">Today's 15:07 UTC feed build stored "New Mexico&amp;#8212;data centers…" with a code where the dash should be (1 of 100 cards since 11 November; the 11:30 editions are clean). The same fix as News &amp; Media is needed in the feed. <a href="https://github.com/growthpigs/alpha-war-room/issues/17864" style="color:var(--teal)">#17864</a></div></div>
     </div>
   </div>
 </section>
@@ -299,7 +298,7 @@
 <section class="slide full">
   <div class="col">
     <div class="eyebrow">Close</div>
-    <h1 style="font-size:clamp(28px,4.6vw,64px)">Five asks checked live, the feed and the Knowledge Base on for every client, two problems named.</h1>
+    <h1 style="font-size:clamp(28px,4.6vw,64px)">Five asks checked live, the feed and the Knowledge Base on for every client, one problem named and being fixed.</h1>
     <p class="sub" style="max-width:60ch">Pick any slide and we open its issue together.</p>
   </div>
 </section>
@@ -313,7 +312,7 @@
 <tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/13794">#13794</a></td><td>[EID] Gold standard: EID Morning News 25 Sep 2026, scored story by story against News &amp; Media</td><td>open · PARTIAL (2026-11-11)</td><td>merged #17275; verdict dated 2026-11-11</td><td>For each forwarded bulletin, the share of its stories present in that morning's EID Daily Clips brief, every miss named by stage</td></tr>
 <tr><td><a href="https://github.com/growthpigs/alpha-war-room/issues/16172">#16172</a></td><td>Save the product: the morning email, CTO Sweep, stay signed in, curation</td><td>open · none</td><td>merged #17680 #17612 #17436 #17411 #17401 #17298 #17287 #17278</td><td>no smoke test in the body</td></tr>
     </table></div>
-    <p class="cap" style="margin-top:14px">This week's work outside the epic: <a style="color:var(--teal)" href="https://github.com/growthpigs/alpha-war-room/issues/17360">#17360</a> the feed · <a style="color:var(--teal)" href="https://github.com/growthpigs/alpha-war-room/issues/17621">#17621</a> Knowledge Base · <a style="color:var(--teal)" href="https://github.com/growthpigs/alpha-war-room/issues/17852">#17852</a> energy markets · <a style="color:var(--teal)" href="https://github.com/growthpigs/alpha-war-room/issues/17864">#17864</a> feed headline code</p>
+    <p class="cap" style="margin-top:14px">This week's work outside the epic: <a style="color:var(--teal)" href="https://github.com/growthpigs/alpha-war-room/issues/17360">#17360</a> the feed · <a style="color:var(--teal)" href="https://github.com/growthpigs/alpha-war-room/issues/17621">#17621</a> Knowledge Base · <a style="color:var(--teal)" href="https://github.com/growthpigs/alpha-war-room/issues/17852">#17852</a> energy markets</p>
   </div>
 </section>
 
