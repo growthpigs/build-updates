@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>War Room TLDR · 17 to 20 November 2026</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta name="referrer" content="no-referrer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:dark;
+    --amber:#ffd166;
+    --navy:#060b35; --blue:#2b5cf2; --teal:#14b8a6; --green:#b7fb5e; --red:#cf4a4c;
+    --muted:rgba(255,255,255,.62); --line:rgba(255,255,255,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--navy);color:#fff;font-family:Roboto,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
+
+  .slide{
+    position:fixed;inset:0;display:none;
+    padding-block:clamp(26px,4.4vw,72px) clamp(64px,6vw,96px);
+    padding-left:max(clamp(16px,5.4vw,90px), env(safe-area-inset-left,0px));
+    padding-right:max(clamp(16px,5.4vw,90px), env(safe-area-inset-right,0px));
+  }
+  .slide.on{display:grid;animation:in .32s ease both}
+  @keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  .slide.full{grid-template-columns:minmax(0,1fr);align-content:center}
+  .slide.split{grid-template-columns:minmax(0,0.92fr) minmax(0,1.3fr);gap:clamp(22px,3.2vw,56px);align-items:center}
+  .col{min-width:0}
+
+  .eyebrow{font-size:clamp(10px,1.05vw,14px);letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--teal);margin-bottom:clamp(10px,1.4vw,18px)}
+  .badge{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:clamp(10px,1vw,13px);font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:clamp(11px,1.5vw,18px)}
+  h1{font-size:clamp(32px,6vw,82px);line-height:1.02;font-weight:900;letter-spacing:-.02em}
+  h2{font-size:clamp(26px,min(4.1vw,5.5vh),58px);line-height:1.06;font-weight:900;letter-spacing:-.02em;margin-bottom:clamp(12px,1.6vw,22px)}
+  .sub{font-size:clamp(14px,1.6vw,23px);color:var(--muted);margin-top:clamp(13px,1.6vw,20px);max-width:32ch;line-height:1.4}
+  .lede{font-size:clamp(13px,min(1.42vw,2.05vh),20px);line-height:1.42;max-width:34ch;color:rgba(255,255,255,.9);margin-bottom:clamp(13px,1.7vw,22px)}
+
+  ul{list-style:none;display:flex;flex-direction:column;gap:clamp(7px,min(.95vw,1.35vh),13px)}
+  li{font-size:clamp(13px,min(1.38vw,1.98vh),20px);line-height:1.4;padding-left:clamp(16px,1.5vw,24px);position:relative;color:rgba(255,255,255,.93)}
+  li:before{content:"";position:absolute;left:0;top:.52em;width:clamp(6px,.58vw,9px);height:clamp(6px,.58vw,9px);border-radius:50%;background:var(--green)}
+  li b{font-weight:700;color:#fff}
+  .was{color:var(--muted);font-weight:400}
+  .env{display:inline-block;font-size:.72em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(20,184,166,.45);border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:.12em;white-space:nowrap}
+  .env.stg{color:var(--green);border-color:rgba(183,251,94,.4)}
+
+  figure{margin:0;width:100%}
+  .shot{
+    width:100%;display:block;border-radius:12px;border:1px solid var(--line);
+    background:#0b1450;box-shadow:0 18px 50px rgba(0,0,0,.45);
+    aspect-ratio:16/10;object-fit:cover;object-position:top center;
+  }
+  /* Two stacked wide frames, resolving to a square. Four quadrants was tried and
+     rejected: at quadrant size a UI screenshot is unreadable texture, not evidence. */
+  /* max-height caps the square: on a wide screen a 1:1 box driven by a ~1020px
+     column computes taller than the viewport and clips the lower frame off the
+     bottom of the slide. Caught by opening the deck, not by curl. A clipped
+     image still returns 200 image/jpeg. */
+  .mosaic{display:grid;grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:12px;width:100%;aspect-ratio:1/1;max-height:70vh}
+  .mosaic .shot{aspect-ratio:auto;height:100%;min-height:0}
+  .cap{font-size:clamp(10px,.98vw,13px);color:var(--muted);margin-top:10px;line-height:1.35}
+  .cap b{color:rgba(255,255,255,.85);font-weight:700}
+  .nocap{border:1px dashed var(--line);border-radius:12px;padding:clamp(16px,2vw,26px);background:rgba(255,255,255,.03)}
+  .nocap .t{font-size:clamp(12px,1.2vw,16px);font-weight:700;color:var(--teal);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+  .nocap .d{font-size:clamp(11px,min(1.1vw,1.9vh),15px);color:var(--muted);line-height:1.45}
+  .nocap .d b{color:rgba(255,255,255,.88)}
+
+  .stats{display:flex;flex-wrap:wrap;gap:clamp(16px,3vw,52px);margin-top:clamp(16px,2.2vw,30px)}
+  .stat .n{font-size:clamp(34px,5.6vw,78px);font-weight:900;line-height:1;letter-spacing:-.03em}
+  .stat .l{font-size:clamp(10px,1.02vw,14px);letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:8px;font-weight:500}
+  .stat.b .n{color:var(--blue)} .stat.t .n{color:var(--teal)} .stat.g .n{color:var(--green)}
+  /* In a split slide the three stats share a ~530px column. Letter-spaced labels
+     pushed the third stat onto its own row at 1280 and 1440 wide, which only
+     looking at the slide caught. Capped labels break onto two lines instead. */
+  .slide.split .stats{gap:clamp(14px,2vw,30px)}
+  .slide.split .stat .l{letter-spacing:.08em;max-width:11ch;line-height:1.3}
+
+  .fronts{display:grid;grid-template-columns:1fr 1fr;gap:clamp(9px,1.1vw,15px);margin-top:clamp(18px,2.2vw,30px)}
+  .front{border:1px solid var(--line);border-radius:12px;padding:clamp(12px,1.4vw,20px);background:rgba(255,255,255,.035)}
+  .front .t{font-size:clamp(13px,1.35vw,19px);font-weight:700}
+  .front .d{font-size:clamp(10px,1.02vw,14px);color:var(--muted);margin-top:6px;line-height:1.32}
+  .front .c{font-size:clamp(10px,.95vw,13px);color:var(--teal);margin-top:9px;font-weight:700;letter-spacing:.06em}
+
+  .refs{margin-top:clamp(14px,1.8vw,24px);font-size:clamp(10px,1vw,14px);color:var(--muted)}
+  .refs a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(20,184,166,.35);margin-right:13px}
+  .refs a:hover{color:#fff;border-color:#fff}
+
+  .nav{position:fixed;bottom:clamp(12px,1.7vw,24px);left:0;right:0;display:flex;align-items:center;justify-content:center;gap:13px;z-index:20}
+  .dots{display:flex;gap:6px}
+  .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.24);cursor:pointer;border:0;padding:0;transition:.18s}
+  .dot.on{background:var(--green);transform:scale(1.28)}
+  .arrow{background:rgba(255,255,255,.07);border:1px solid var(--line);color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:15px;display:grid;place-items:center;transition:.18s}
+  .arrow:hover{background:rgba(255,255,255,.18)}
+  .count{position:fixed;top:clamp(14px,1.9vw,26px);right:clamp(18px,2.6vw,40px);font-size:clamp(10px,1vw,13px);color:var(--muted);letter-spacing:.1em;z-index:20}
+  .brandbar{position:fixed;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--teal) 55%,var(--green));z-index:20}
+  .hint{position:fixed;bottom:clamp(12px,1.7vw,24px);right:clamp(18px,2.6vw,40px);font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.08em;z-index:20}
+
+  @media (max-width:900px){
+    .slide.split{grid-template-columns:1fr;align-content:center;gap:18px}
+    .slide{overflow-y:auto}
+    .lede,.sub{max-width:none}
+    .hint{display:none}
+  }
+
+  /* Portrait modifier. A narrow screenshot dropped into the 16/10 .shot box is
+     cropped to a top sliver by object-fit:cover, so the evidence disappears.
+     .tall lets the whole frame show, height-capped to the slide. */
+  .shot.tall{aspect-ratio:auto;object-fit:contain;height:auto;max-height:62vh;width:auto;max-width:100%;background:transparent;box-shadow:0 14px 40px rgba(0,0,0,.5);margin:0 auto}
+
+</style>
+
+<style>
+  .chain{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(6px,.8vw,12px);margin-top:clamp(18px,2.2vw,30px)}
+  .chain .k{border:1px solid var(--line);border-radius:10px;padding:clamp(8px,1vw,14px) clamp(10px,1.2vw,18px);background:rgba(255,255,255,.04);font-size:clamp(12px,1.25vw,18px);font-weight:700}
+  .chain .k small{display:block;font-weight:400;color:var(--muted);font-size:.72em;margin-top:3px}
+  .chain .a{color:var(--teal);font-weight:900;font-size:clamp(14px,1.4vw,20px)}
+  .state{display:inline-block;font-size:.7em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:.12em;white-space:nowrap}
+  .state.live{color:var(--green);border:1px solid rgba(183,251,94,.45)}
+  .state.wait{color:#ffd166;border:1px solid rgba(255,209,102,.45)}
+  .state.open{color:var(--muted);border:1px solid var(--line)}
+  .state.stg{color:var(--teal);border:1px solid rgba(20,184,166,.45)}
+  .state.plan{color:var(--muted);border:1px dashed rgba(255,255,255,.35)}
+  .tw{overflow-x:auto;max-width:100%}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(14px,1.8vw,24px);font-size:clamp(10px,1vw,13px);color:var(--muted)}
+  .weeks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(9px,1.1vw,15px);margin-top:clamp(14px,1.8vw,22px)}
+  .weeks .front ul{margin-top:8px}
+  .weeks .front li{font-size:clamp(11px,min(1.1vw,1.7vh),15px)}
+  @media (max-width:900px){.weeks{grid-template-columns:1fr}.fronts{grid-template-columns:1fr}}
+  :focus-visible{outline:2px solid var(--green);outline-offset:2px}
+  @media (prefers-reduced-motion:reduce){.slide.on{animation:none}}
+  table.ix{border-collapse:collapse;width:100%;font-size:clamp(10px,min(1vw,1.7vh),14px);margin-top:8px}
+  table.ix td,table.ix th{border-bottom:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}
+  table.ix th{color:var(--teal);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:.85em}
+  table.ix a{color:var(--teal);text-decoration:none}
+</style>
+<style>
+  .oc{display:flex;flex-direction:column;gap:clamp(18px,3vh,34px);max-width:1100px}
+  .oc .k{font-size:clamp(12px,1.2vw,16px);letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--teal);margin-bottom:6px}
+  .oc .ask{font-size:clamp(22px,min(3vw,4.4vh),44px);line-height:1.2;color:var(--muted);font-weight:500}
+  .oc .now{font-size:clamp(26px,min(3.8vw,5.4vh),56px);line-height:1.15;font-weight:900;letter-spacing:-.01em}
+  .oc .meta{display:flex;flex-wrap:wrap;gap:clamp(16px,3vw,48px);font-size:clamp(14px,min(1.5vw,2.2vh),22px);color:rgba(255,255,255,.85)}
+  .oc .meta a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(20,184,166,.4)}
+  .front a,.cap a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(20,184,166,.35)}
+  .oc .n{font-size:clamp(12px,1.1vw,15px);color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+  li a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(20,184,166,.35)}
+</style>
+</head>
+<body>
+<div class="brandbar"></div>
+<div class="count"><span id="cur">1</span> / <span id="tot">10</span></div>
+
+<section class="slide full on">
+  <div class="col">
+    <div class="badge">Think Big · 17 to 20 November</div>
+    <div class="eyebrow">Weekly TLDR</div>
+    <h1>A daily audit of the feed, /admin and a client side by side, and the wider work since 10 November</h1>
+    <p class="sub" style="max-width:62ch">Since the feed report of 17 November. It also carries the work outside the feed from 10 to 17 November, which that report left for this one.</p>
+    <div class="stats">
+      <div class="stat b"><div class="n">116</div><div class="l">Code PRs merged, 17 to 20 Nov</div></div>
+      <div class="stat t"><div class="n">~100</div><div class="l">DUs (est.)</div></div>
+      <div class="stat g"><div class="n">3</div><div class="l">Production releases</div></div>
+    </div>
+    <div class="legend"><span class="state live">live</span><span class="state stg">on staging</span><span class="state wait">being checked</span> Live means it runs on app.thewarroom.ai or feed.thewarroom.ai today. "Checked" gives the date we looked at it there.</div>
+  </div>
+</section>
+
+<section class="slide full"><div class="col oc">
+  <div class="n">You asked, now it does · 1 of 5</div>
+  <div><div class="k">You asked</div><div class="ask">EID's news thinned out after its social keywords were trimmed to fit Mentionlytics</div></div>
+  <div><div class="k">Now it does</div><div class="now">EID's news keywords are kept apart from the social ones: 65 news keywords, and 60 of 61 news-only terms brought in stories within a day. <span class="state live">live</span></div></div>
+  <div class="meta"><div><div class="k">Checked</div>10 Nov · live on EID</div><div><div class="k">Issue</div><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/12716">#12716</a></div></div>
+</div></section>
+
+<section class="slide full"><div class="col oc">
+  <div class="n">You asked, now it does · 2 of 5</div>
+  <div><div class="k">You asked</div><div class="ask">"Why it matters" should name our campaign or say there is no link, and never invent an organisation</div></div>
+  <div><div class="k">Now it does</div><div class="now">A story with no link says so. 9 of 10,386 such stories since 5 November still carried a "why" line, and none of them was in EID's brief when we checked. <span class="state live">live</span></div></div>
+  <div class="meta"><div><div class="k">Checked</div>10 Nov · live on EID</div><div><div class="k">Issue</div><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/13370">#13370</a></div></div>
+</div></section>
+
+<section class="slide full"><div class="col oc">
+  <div class="n">You asked, now it does · 3 of 5</div>
+  <div><div class="k">You asked</div><div class="ask">Aaron's list and the sources we add by hand must never be removed by the system</div></div>
+  <div><div class="k">Now it does</div><div class="now">Every hand-entered source is pinned, and none has been removed. <span class="state live">live</span></div></div>
+  <div class="meta"><div><div class="k">Checked</div>10 Nov · live, every client</div><div><div class="k">Issue</div><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/13493">#13493</a></div></div>
+</div></section>
+
+<section class="slide full"><div class="col oc">
+  <div class="n">You asked, now it does · 4 of 5</div>
+  <div><div class="k">You asked</div><div class="ask">The Narrative period filter lags, its pills are tiny, and the hover tools cover the info button (Jackson)</div></div>
+  <div><div class="k">Now it does</div><div class="now">The filter answers at once, the pills draw at 10 px (up from 9 px), and no info button is covered. <span class="state live">live</span></div></div>
+  <div class="meta"><div><div class="k">Checked</div>10 and 13 Nov · live on EID</div><div><div class="k">Issues</div><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/12203">#12203</a> · <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/12194">#12194</a></div></div>
+</div></section>
+
+<section class="slide full"><div class="col oc">
+  <div class="n">You asked, now it does · 5 of 5</div>
+  <div><div class="k">You asked</div><div class="ask">The Publication Atlas axis labels are too small to read</div></div>
+  <div><div class="k">Now it does</div><div class="now">They draw at 8 px on screen, up from 5.7 px. <span class="state live">live</span></div></div>
+  <div class="meta"><div><div class="k">Checked</div>13 Nov · live on EID, 1440 px wide</div><div><div class="k">Issue</div><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/13400">#13400</a></div></div>
+</div></section>
+
+<section class="slide full">
+  <div class="col">
+    <div class="eyebrow">At a glance · 17 to 20 November</div>
+    <h2>Four fronts</h2>
+    <div class="fronts">
+      <div class="front"><div class="t">1. The feed is audited every day</div><div class="d">39 items graded on feed.thewarroom.ai on 19 November: 25 passed, 11 failed. Ten fixes merged the same day and shipped that evening.</div><div class="c"><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18538">#18538</a></div></div>
+      <div class="front"><div class="t">2. /admin and a client, side by side</div><div class="d">A client opens in its own tab from /admin. Part live, part still red on staging.</div><div class="c"><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18106">#18106</a></div></div>
+      <div class="front"><div class="t">3. More stories arrive with their text</div><div class="d">Pages a publisher refuses get a second way in. A second Google News supplier is on staging.</div><div class="c"><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/16950">#16950</a> · <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18597">#18597</a></div></div>
+      <div class="front"><div class="t">4. Production checks itself</div><div class="d">A daily quality check after each release, a Morning Report that no longer depends on one machine, Daily Clips runs that are rebuilt if a deploy cuts them.</div><div class="c"><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18225">#18225</a> · <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18335">#18335</a></div></div>
+    </div>
+    <div class="nocap" style="margin-top:18px"><div class="t">No screenshots in this deck</div><div class="d">This deck is text only. No screens were captured for it this week, and none are reused from an earlier week.</div></div>
+  </div>
+</section>
+
+<section class="slide full">
+  <div class="col">
+    <div class="eyebrow">Front 1 · the Morning Feed</div>
+    <h2>The feed is audited every day, on the live feed</h2>
+    <ul>
+      <li><b>19 November, first full audit on feed.thewarroom.ai as EID:</b> 39 items graded. 25 passed, 11 failed, 2 behave as built, 1 could not be checked.</li>
+      <li><b>Ten fixes merged the same day</b> and went into the live app with that evening's release (18:44 UTC): a site that is not a news outlet no longer leads a story or takes the credit; Breaking and Rising stories show on Today's picks and no longer sit behind a tab; every early-warning label reads provisional; the Daily Brief agrees with the threat level. <span class="state wait">being checked</span></li>
+      <li>The audit has not yet recorded its re-check of those ten on the live feed, so we call them shipped, not passed.</li>
+      <li><b>Ask War Room</b> from a feed card opens a new chat on that story, not your last conversation. A photo that fails once is tried again before its frame is removed. <span class="state live">live since 17 Nov</span></li>
+      <li><b>Talk on X:</b> an outlet's own post is no longer shown as talk about the story. <span class="state stg">on staging</span></li>
+    </ul>
+    <div class="refs"><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18538">#18538 the audit</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18353">#18353 card shape</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18219">#18219 Talk on X</a></div>
+  </div>
+</section>
+
+<section class="slide full">
+  <div class="col">
+    <div class="eyebrow">Front 2 · /admin</div>
+    <h2>/admin and a client app, side by side in one browser</h2>
+    <p class="lede" style="max-width:70ch">You told us that testing a client from /admin meant clicking "Exit admin view" each time, and that it often signed you out.</p>
+    <ul>
+      <li><b>A client now opens in its own tab from /admin.</b> The tab reads "Viewing [client] from admin" in a quiet strip, with "Back to admin". <span class="state live">live since 17 and 19 Nov</span></li>
+      <li>A personal admin sign-in (Roderic, Jackson, Carlos) can open any client this way, as the shared admin login can. <span class="state live">live since 18 Nov</span></li>
+      <li><b>Not finished.</b> The nine-step check passed on staging on 18 November and was red on steps 8 and 9 on 20 November (a member signing in beside /admin). Two more fixes merged today. <span class="state stg">on staging</span></li>
+      <li><b>Highway:</b> Jackson found on 20 November that a client made in /admin could not switch X on. The cause is fixed for new clients. <span class="state stg">on staging</span> Highway's own row is still missing on the live app as of 15:20 UTC today.</li>
+    </ul>
+    <div class="refs"><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18106">#18106</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18437">#18437 the nightly check</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18583">#18583 Highway</a></div>
+  </div>
+</section>
+
+<section class="slide full">
+  <div class="col">
+    <div class="eyebrow">Fronts 3 and 4 · supply and upkeep</div>
+    <h2>More stories arrive with their text, and production checks itself</h2>
+    <ul>
+      <li><b>Refused pages:</b> when a publisher refuses our request for a story's text, the story gets a second, paid check, up to 40 a client a day. <span class="state live">live since 18 Nov</span> Read on the live database today: EID used all 40 on 19 and on 20 November, so its limit rises to 150. <span class="state stg">on staging</span></li>
+      <li><b>Google News:</b> a second supplier takes over when the first slows, and links the hourly run skipped are retried the next hour. <span class="state stg">on staging</span></li>
+      <li><b>Daily Clips:</b> a run cut short by a deploy is rebuilt. Read on the live database today: all 6 scheduled runs since 18 November finished. <span class="state live">live</span></li>
+      <li><b>Morning Report</b> (the 6 a.m. UTC status email to Carlos and Jackson): on 17 November a deploy made it 69 minutes late. It now sends once from its own scheduled job, and arrived at 06:02, 06:03 and 06:02 UTC on 18, 19 and 20 November. <span class="state live">live</span></li>
+      <li><b>Daily quality check:</b> a read-only check that compares each client's briefs, Daily Clips and summaries with a week earlier and pages us on a drop. Its first run, on 17 November, read 8 clients: 7 were level and one was flagged for a thinner Daily Clips.</li>
+      <li><b>Public Intel</b> names the date of its Meta snapshot instead of always saying "live". <span class="state live">in the live app since 17 Nov</span></li>
+    </ul>
+    <div class="refs"><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/16950">#16950</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18597">#18597</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18335">#18335</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18349">#18349</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18225">#18225</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18320">#18320</a></div>
+  </div>
+</section>
+
+<section class="slide full">
+  <div class="col">
+    <div class="eyebrow">10 to 17 November · outside the feed</div>
+    <h2>What the feed report left for this one</h2>
+    <ul>
+      <li><b>Knowledge Base drawer, for every client.</b> Switched on on 13 November. It opens from the book icon in the top bar and reads each document in place. <span class="state live">live</span></li>
+      <li><b>Production releases itself in the evening.</b> It ships exactly what staging served, once the required checks and two independent reviews of the whole change pass. 21 releases from 10 to 17 November, 3 more since. A database change still waits for Roderic's yes. <span class="state live">live</span></li>
+      <li><b>EID's energy prediction markets were not updating since mid-October.</b> We found the cause on 13 November; the fix went live on 14 November, and that morning 33 of the 36 energy markets the feed can show for EID had a fresh price again. <span class="state live">live</span></li>
+      <li><b>Volume, 10 to 17 November outside the feed:</b> 384 code PRs, about 317 DUs. (The feed's 196 PRs and about 204 DUs were in the last report.)</li>
+    </ul>
+    <div class="refs"><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/17621">#17621 Knowledge Base</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/17046">#17046 releases</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/17852">#17852 energy markets</a></div>
+  </div>
+</section>
+
+<section class="slide full">
+  <div class="col">
+    <div class="eyebrow">Still open, by name</div>
+    <h2>What is not done</h2>
+    <ul>
+      <li>The ten audit fixes of 19 November: shipped, re-check on the live feed not yet recorded. <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18538">#18538</a></li>
+      <li>/admin beside a member sign-in: steps 8 and 9 red on staging on 20 November. <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18106">#18106</a></li>
+      <li>Highway cannot switch X on yet on the live app. <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18583">#18583</a></li>
+      <li>Mentionlytics mentions are stored 4 to 5 hours early (US Eastern time read as UTC). <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/17328">#17328</a></li>
+      <li>Quick Insert in Workspace can land in a live brief without you noticing. <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/17730">#17730</a></li>
+      <li>Public Intel's Meta data still comes from a scraper; the move to Meta's own Ad Library waits on Meta confirming an ID. <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18320">#18320</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide full">
+  <div class="col">
+    <div class="eyebrow">For your users</div>
+    <h2>What your users can do now</h2>
+    <ul>
+      <li>Open a client in its own tab from /admin and come back with "Back to admin".</li>
+      <li>Tap Ask War Room on a feed card and get a fresh chat on that story.</li>
+      <li>Open the Knowledge Base from the top bar and read every document in place.</li>
+      <li>See in Public Intel which day its Meta numbers are from.</li>
+      <li>Use the Narrative period filter without waiting, and read the Publication Atlas labels.</li>
+      <li>Count on hand-added sources staying, and on EID's news keywords staying whole.</li>
+    </ul>
+    <h2 style="margin-top:clamp(18px,2.4vw,34px)">Next</h2>
+    <ul>
+      <li>The daily audit's re-check of the ten fixes on the live feed.</li>
+      <li>/admin beside a member sign-in, green on staging, then Jackson's nine steps.</li>
+      <li>Highway's X switch on the live app.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide full">
+  <div class="col">
+    <div class="eyebrow">Index</div>
+    <h2>The epics and every issue in this deck</h2>
+    <div class="tw"><table class="ix">
+      <tr><th>What</th><th>Issue</th><th>State · verdict</th><th>Its smoke test</th></tr>
+      <tr><td>Running epic: Dushound, continuity and handover, due 30 November</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/15848">#15848</a></td><td>open · none</td><td>none in the epic body</td></tr>
+      <tr><td>Previous epic: Corgi</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/13326">#13326</a></td><td></td><td></td></tr>
+      <tr><td>Moved this week: account register (merged #18469)</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/15849">#15849</a></td><td>open · none</td><td>no smoke test in the body</td></tr>
+      <tr><td>Moved this week: the product plan (merged #18595, #18572, #18570, #18563, #18431, #18338)</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/16172">#16172</a></td><td>open · none</td><td>no smoke test in the body</td></tr>
+      <tr><td colspan="4">Epic tree 12 · moved this week 2 · reconciles 12 of 12. Most of this week's work sits outside the epic, in the issues below.</td></tr>
+    </table></div>
+    <div class="refs" style="line-height:2">
+      <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/12716">#12716</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/13370">#13370</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/13493">#13493</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/12203">#12203</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/12194">#12194</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/13400">#13400</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18538">#18538</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18353">#18353</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18219">#18219</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18106">#18106</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18437">#18437</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18583">#18583</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/16950">#16950</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18597">#18597</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18335">#18335</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18349">#18349</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18225">#18225</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18320">#18320</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/17621">#17621</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/17046">#17046</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/17852">#17852</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/17328">#17328</a><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/17730">#17730</a>
+    </div>
+    <p class="cap" style="margin-top:14px">Window: 17 Nov 13:45 UTC to 20 Nov 15:14 UTC (frozen cutoff). 155 PRs merged: 116 code PRs, 39 promotion PRs (3 to production, 36 to staging). DUs weight each code PR by its prefix; the split across categories is judgement.</p>
+  </div>
+</section>
+
+<div class="nav">
+  <button class="arrow" id="prev" aria-label="Previous slide">&#8249;</button>
+  <div class="dots" id="dots"></div>
+  <button class="arrow" id="next" aria-label="Next slide">&#8250;</button>
+</div>
+<div class="hint">← → to navigate · F for full screen</div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var dots = document.getElementById('dots');
+  var cur = 0;
+  document.getElementById('tot').textContent = slides.length;
+  slides.forEach(function(_, i){
+    var b = document.createElement('button');
+    b.className = 'dot' + (i === 0 ? ' on' : '');
+    b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    b.addEventListener('click', function(){ go(i); });
+    dots.appendChild(b);
+  });
+  function go(n){
+    cur = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function(s, i){ s.classList.toggle('on', i === cur); });
+    Array.prototype.forEach.call(dots.children, function(d, i){ d.classList.toggle('on', i === cur); });
+    document.getElementById('cur').textContent = cur + 1;
+  }
+  document.getElementById('next').addEventListener('click', function(){ go(cur + 1); });
+  document.getElementById('prev').addEventListener('click', function(){ go(cur - 1); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(cur + 1); }
+    if (e.key === 'ArrowLeft'  || e.key === 'PageUp') { e.preventDefault(); go(cur - 1); }
+    if (e.key === 'Home') { go(0); }
+    if (e.key === 'End')  { go(slides.length - 1); }
+    if (e.key === 'f' || e.key === 'F') {
+      if (document.fullscreenElement) { document.exitFullscreen(); }
+      else if (document.documentElement.requestFullscreen) { document.documentElement.requestFullscreen(); }
+    }
+  });
+})();
+</script>
+</body>
