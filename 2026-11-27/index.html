@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>War Room TLDR · 24 to 27 November 2026</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta name="referrer" content="no-referrer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:dark;
+    --amber:#ffd166;
+    --navy:#060b35; --blue:#2b5cf2; --teal:#14b8a6; --green:#b7fb5e; --red:#cf4a4c;
+    --muted:rgba(255,255,255,.62); --line:rgba(255,255,255,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--navy);color:#fff;font-family:Roboto,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
+
+  .slide{
+    position:fixed;inset:0;display:none;
+    padding-block:clamp(26px,4.4vw,72px) clamp(64px,6vw,96px);
+    padding-left:max(clamp(16px,5.4vw,90px), env(safe-area-inset-left,0px));
+    padding-right:max(clamp(16px,5.4vw,90px), env(safe-area-inset-right,0px));
+  }
+  .slide.on{display:grid;animation:in .32s ease both}
+  @keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  .slide.full{grid-template-columns:minmax(0,1fr);align-content:center}
+  .slide.split{grid-template-columns:minmax(0,0.92fr) minmax(0,1.3fr);gap:clamp(22px,3.2vw,56px);align-items:center}
+  .col{min-width:0}
+
+  .eyebrow{font-size:clamp(10px,1.05vw,14px);letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--teal);margin-bottom:clamp(10px,1.4vw,18px)}
+  .badge{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:clamp(10px,1vw,13px);font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:clamp(11px,1.5vw,18px)}
+  h1{font-size:clamp(32px,6vw,82px);line-height:1.02;font-weight:900;letter-spacing:-.02em}
+  h2{font-size:clamp(26px,min(4.1vw,5.5vh),58px);line-height:1.06;font-weight:900;letter-spacing:-.02em;margin-bottom:clamp(12px,1.6vw,22px)}
+  .sub{font-size:clamp(14px,1.6vw,23px);color:var(--muted);margin-top:clamp(13px,1.6vw,20px);max-width:32ch;line-height:1.4}
+  .lede{font-size:clamp(13px,min(1.42vw,2.05vh),20px);line-height:1.42;max-width:34ch;color:rgba(255,255,255,.9);margin-bottom:clamp(13px,1.7vw,22px)}
+
+  ul{list-style:none;display:flex;flex-direction:column;gap:clamp(7px,min(.95vw,1.35vh),13px)}
+  li{font-size:clamp(13px,min(1.38vw,1.98vh),20px);line-height:1.4;padding-left:clamp(16px,1.5vw,24px);position:relative;color:rgba(255,255,255,.93)}
+  li:before{content:"";position:absolute;left:0;top:.52em;width:clamp(6px,.58vw,9px);height:clamp(6px,.58vw,9px);border-radius:50%;background:var(--green)}
+  li b{font-weight:700;color:#fff}
+  .was{color:var(--muted);font-weight:400}
+  .env{display:inline-block;font-size:.72em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(20,184,166,.45);border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:.12em;white-space:nowrap}
+  .env.stg{color:var(--green);border-color:rgba(183,251,94,.4)}
+
+  figure{margin:0;width:100%}
+  .shot{
+    width:100%;display:block;border-radius:12px;border:1px solid var(--line);
+    background:#0b1450;box-shadow:0 18px 50px rgba(0,0,0,.45);
+    aspect-ratio:16/10;object-fit:cover;object-position:top center;
+  }
+  /* Two stacked wide frames, resolving to a square. Four quadrants was tried and
+     rejected: at quadrant size a UI screenshot is unreadable texture, not evidence. */
+  /* max-height caps the square: on a wide screen a 1:1 box driven by a ~1020px
+     column computes taller than the viewport and clips the lower frame off the
+     bottom of the slide. Caught by opening the deck, not by curl. A clipped
+     image still returns 200 image/jpeg. */
+  .mosaic{display:grid;grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:12px;width:100%;aspect-ratio:1/1;max-height:70vh}
+  .mosaic .shot{aspect-ratio:auto;height:100%;min-height:0}
+  .cap{font-size:clamp(10px,.98vw,13px);color:var(--muted);margin-top:10px;line-height:1.35}
+  .cap b{color:rgba(255,255,255,.85);font-weight:700}
+  .nocap{border:1px dashed var(--line);border-radius:12px;padding:clamp(16px,2vw,26px);background:rgba(255,255,255,.03)}
+  .nocap .t{font-size:clamp(12px,1.2vw,16px);font-weight:700;color:var(--teal);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+  .nocap .d{font-size:clamp(11px,min(1.1vw,1.9vh),15px);color:var(--muted);line-height:1.45}
+  .nocap .d b{color:rgba(255,255,255,.88)}
+
+  .stats{display:flex;flex-wrap:wrap;gap:clamp(16px,3vw,52px);margin-top:clamp(16px,2.2vw,30px)}
+  .stat .n{font-size:clamp(34px,5.6vw,78px);font-weight:900;line-height:1;letter-spacing:-.03em}
+  .stat .l{font-size:clamp(10px,1.02vw,14px);letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:8px;font-weight:500}
+  .stat.b .n{color:var(--blue)} .stat.t .n{color:var(--teal)} .stat.g .n{color:var(--green)}
+  /* In a split slide the three stats share a ~530px column. Letter-spaced labels
+     pushed the third stat onto its own row at 1280 and 1440 wide, which only
+     looking at the slide caught. Capped labels break onto two lines instead. */
+  .slide.split .stats{gap:clamp(14px,2vw,30px)}
+  .slide.split .stat .l{letter-spacing:.08em;max-width:11ch;line-height:1.3}
+
+  .fronts{display:grid;grid-template-columns:1fr 1fr;gap:clamp(9px,1.1vw,15px);margin-top:clamp(18px,2.2vw,30px)}
+  .front{border:1px solid var(--line);border-radius:12px;padding:clamp(12px,1.4vw,20px);background:rgba(255,255,255,.035)}
+  .front .t{font-size:clamp(13px,1.35vw,19px);font-weight:700}
+  .front .d{font-size:clamp(10px,1.02vw,14px);color:var(--muted);margin-top:6px;line-height:1.32}
+  .front .c{font-size:clamp(10px,.95vw,13px);color:var(--teal);margin-top:9px;font-weight:700;letter-spacing:.06em}
+
+  .refs{margin-top:clamp(14px,1.8vw,24px);font-size:clamp(10px,1vw,14px);color:var(--muted)}
+  .refs a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(20,184,166,.35);margin-right:13px}
+  .refs a:hover{color:#fff;border-color:#fff}
+
+  .nav{position:fixed;bottom:clamp(12px,1.7vw,24px);left:0;right:0;display:flex;align-items:center;justify-content:center;gap:13px;z-index:20}
+  .dots{display:flex;gap:6px}
+  .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.24);cursor:pointer;border:0;padding:0;transition:.18s}
+  .dot.on{background:var(--green);transform:scale(1.28)}
+  .arrow{background:rgba(255,255,255,.07);border:1px solid var(--line);color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:15px;display:grid;place-items:center;transition:.18s}
+  .arrow:hover{background:rgba(255,255,255,.18)}
+  .count{position:fixed;top:clamp(14px,1.9vw,26px);right:clamp(18px,2.6vw,40px);font-size:clamp(10px,1vw,13px);color:var(--muted);letter-spacing:.1em;z-index:20}
+  .brandbar{position:fixed;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--teal) 55%,var(--green));z-index:20}
+  .hint{position:fixed;bottom:clamp(12px,1.7vw,24px);right:clamp(18px,2.6vw,40px);font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.08em;z-index:20}
+
+  @media (max-width:900px){
+    .slide.split{grid-template-columns:1fr;align-content:center;gap:18px}
+    .slide{overflow-y:auto}
+    .lede,.sub{max-width:none}
+    .hint{display:none}
+  }
+
+  /* Portrait modifier. A narrow screenshot dropped into the 16/10 .shot box is
+     cropped to a top sliver by object-fit:cover, so the evidence disappears.
+     .tall lets the whole frame show, height-capped to the slide. */
+  .shot.tall{aspect-ratio:auto;object-fit:contain;height:auto;max-height:62vh;width:auto;max-width:100%;background:transparent;box-shadow:0 14px 40px rgba(0,0,0,.5);margin:0 auto}
+
+</style>
+
+<style>
+  .chain{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(6px,.8vw,12px);margin-top:clamp(18px,2.2vw,30px)}
+  .chain .k{border:1px solid var(--line);border-radius:10px;padding:clamp(8px,1vw,14px) clamp(10px,1.2vw,18px);background:rgba(255,255,255,.04);font-size:clamp(12px,1.25vw,18px);font-weight:700}
+  .chain .k small{display:block;font-weight:400;color:var(--muted);font-size:.72em;margin-top:3px}
+  .chain .a{color:var(--teal);font-weight:900;font-size:clamp(14px,1.4vw,20px)}
+  .state{display:inline-block;font-size:.7em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:.12em;white-space:nowrap}
+  .state.live{color:var(--green);border:1px solid rgba(183,251,94,.45)}
+  .state.wait{color:#ffd166;border:1px solid rgba(255,209,102,.45)}
+  .state.open{color:var(--muted);border:1px solid var(--line)}
+  .state.stg{color:var(--teal);border:1px solid rgba(20,184,166,.45)}
+  .state.plan{color:var(--muted);border:1px dashed rgba(255,255,255,.35)}
+  .tw{overflow-x:auto;max-width:100%}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(14px,1.8vw,24px);font-size:clamp(10px,1vw,13px);color:var(--muted)}
+  .weeks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(9px,1.1vw,15px);margin-top:clamp(14px,1.8vw,22px)}
+  .weeks .front ul{margin-top:8px}
+  .weeks .front li{font-size:clamp(11px,min(1.1vw,1.7vh),15px)}
+  @media (max-width:900px){.weeks{grid-template-columns:1fr}.fronts{grid-template-columns:1fr}}
+  :focus-visible{outline:2px solid var(--green);outline-offset:2px}
+  @media (prefers-reduced-motion:reduce){.slide.on{animation:none}}
+  table.ix{border-collapse:collapse;width:100%;font-size:clamp(10px,min(1vw,1.7vh),14px);margin-top:8px}
+  table.ix td,table.ix th{border-bottom:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}
+  table.ix th{color:var(--teal);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:.85em}
+  table.ix a{color:var(--teal);text-decoration:none}
+</style>
+<style>
+  .oc{display:flex;flex-direction:column;gap:clamp(18px,3vh,34px);max-width:1100px}
+  .oc .k{font-size:clamp(12px,1.2vw,16px);letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--teal);margin-bottom:6px}
+  .oc .ask{font-size:clamp(22px,min(3vw,4.4vh),44px);line-height:1.2;color:var(--muted);font-weight:500}
+  .oc .now{font-size:clamp(26px,min(3.8vw,5.4vh),56px);line-height:1.15;font-weight:900;letter-spacing:-.01em}
+  .oc .meta{display:flex;flex-wrap:wrap;gap:clamp(16px,3vw,48px);font-size:clamp(14px,min(1.5vw,2.2vh),22px);color:rgba(255,255,255,.85)}
+  .oc .meta a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(20,184,166,.4)}
+  .front a,.cap a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(20,184,166,.35)}
+  .oc .n{font-size:clamp(12px,1.1vw,15px);color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+  li a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(20,184,166,.35)}
+</style>
+</head>
+<body>
+<div class="brandbar"></div>
+<div class="count"><span id="cur">1</span> / <span id="tot">11</span></div>
+<section class="slide full on"><div class="col">
+  <div class="badge">Think Big · 24 to 27 November</div>
+  <div class="eyebrow">Weekly TLDR</div>
+  <h1>Seven more readers get the Morning Feed, breaking news leads it, and settings saves no longer empty it</h1>
+  <p class="sub" style="max-width:62ch">Since the 24 November report. Most of it went live with this week's four releases; the rest is expected after the 27 November release at 19:30 Paris.</p>
+  <div class="stats">
+    <div class="stat b"><div class="n">116</div><div class="l">Code PRs merged</div></div>
+    <div class="stat t"><div class="n">~99</div><div class="l">DUs (est.)</div></div>
+    <div class="stat g"><div class="n">4</div><div class="l">Production releases</div></div>
+    <div class="stat"><div class="n" style="color:#ffd166">34</div><div class="l">In the 27 Nov evening release</div></div>
+  </div>
+  <div class="legend"><span class="state live">live</span> <span class="state wait">expected after the 27 November evening release</span> <span class="state stg">built, off</span> Live means app.thewarroom.ai or feed.thewarroom.ai serves it (read 27 Nov 11:00 UTC).</div>
+</div></section>
+<section class="slide full"><div class="col">
+  <div class="eyebrow">You asked, now it does</div>
+  <div class="oc">
+    <div><div class="k">You asked</div><p class="ask">Add our seven readers to the Morning Feed, starting Monday 23 November.</p></div>
+    <div><div class="k">Now it does</div><p class="now">All seven have had the Morning Feed email every morning since Monday, and not one send has failed.</p></div>
+    <div class="meta"><span><b>Checked</b> live, 27 Nov, on the sending log</span><span><b>Issue</b> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18613">#18613</a></span></div>
+    <p class="n">Outcome 1 of 2</p>
+  </div>
+</div></section>
+<section class="slide full"><div class="col">
+  <div class="eyebrow">You asked, now it does</div>
+  <div class="oc">
+    <div><div class="k">You asked</div><p class="ask">Verify should say what is missing from a Daily Clips brief, not just whether what is there is right.</p></div>
+    <div><div class="k">Now it does</div><p class="now">Verify lists the relevant stories covered elsewhere that War Room does not hold, and says how many the USA-only rule hid.</p></div>
+    <div class="meta"><span><b>Checked</b> live, on the page 12 Nov; still served, re-checked 24 Nov</span><span><b>Issue</b> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/13909">#13909</a></span></div>
+    <p class="n">Outcome 2 of 2</p>
+  </div>
+</div></section>
+<section class="slide full"><div class="col">
+  <div class="eyebrow">Live, one last check to go</div>
+  <h2>Two sign-in fixes are live and waiting on a final check</h2>
+  <ul>
+    <li><b>/admin opens on your own account.</b> Email and password by default, the shared login one click away and remembered per browser. The sign-in check passed on the live app on 24 November. <span class="state live">live</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18902">#18902</a></li>
+    <li><b>/admin beside a client app.</b> Opening a client's app from /admin and coming back keeps /admin signed in; it passed on the live app on 26 November. Jackson's run in a real new Chrome tab is the last check. <span class="state live">live</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18106">#18106</a></li>
+  </ul>
+</div></section>
+<section class="slide full"><div class="col">
+  <div class="eyebrow">Front 1 · Morning Feed</div>
+  <h2>Fresher, clearer, and easier to pass on</h2>
+  <ul>
+    <li>A breaking story leads the feed for up to 48 hours and says the day it broke. <span class="state live">live</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/19021">PR 19021</a></li>
+    <li>Every card says how old its story is, and what each date on it means. <span class="state live">live</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/19031">PR 19031</a></li>
+    <li>The Morning Feed email arrives from a named sender, not "alerts". <span class="state live">live</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/18989">PR 18989</a></li>
+    <li>Ad figures in the feed link to the public ad library they came from. <span class="state live">live</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/18998">PR 18998</a></li>
+    <li>Share a story with a colleague as a short checklist and note, from your own email. The team view is built and held back. <span class="state live">live</span> <span class="state stg">team view: built, off</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/19000">PR 19000</a> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/19014">PR 19014</a></li>
+    <li>Google News links the collector ran out of time for are retried the next hour, not hidden for 48 hours. <span class="state live">live</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18597">#18597</a></li>
+  </ul>
+</div></section>
+<section class="slide full"><div class="col">
+  <div class="eyebrow">Front 2 · Setup, admin and coverage</div>
+  <h2>Fewer surprises when you change things</h2>
+  <ul>
+    <li>Saving News settings never empties the feed while the new keywords are checked. <span class="state live">live</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/18964">PR 18964</a></li>
+    <li>A topic with a nested term is refused on save, and one too vague to search (like "IT") is called that, not "no coverage". <span class="state live">live</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/18809">PR 18809</a> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/18924">PR 18924</a></li>
+    <li>A signed-in admin continues as themselves with no second password, and one stray error no longer signs a member out. <span class="state live">live</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/18958">PR 18958</a> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/18959">PR 18959</a> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/18970">PR 18970</a></li>
+    <li>When a followed news site goes quiet, War Room finds its feed, and alerts us if it stays dark. <span class="state live">live</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/18982">PR 18982</a></li>
+    <li>Chat advice cites its source on each point, and for USA-only clients Canadian stories count as foreign. <span class="state live">live</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/18926">PR 18926</a> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/19104">PR 19104</a></li>
+    <li>A new client's first save in /admin works end to end. <span class="state live">live</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/18994">PR 18994</a></li>
+  </ul>
+</div></section>
+<section class="slide full"><div class="col">
+  <div class="eyebrow">Expected after the 27 November evening release</div>
+  <h2>What should be live on the morning of 28 November</h2>
+  <ul>
+    <li>A Share button on every story card, opening a one-person share right under it. <span class="state wait">expected</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/19213">PR 19213</a></li>
+    <li>Recommended Bills drop co-issuer-only notices and passing mentions in omnibus bills, and the numbers row stops jumping. <span class="state wait">expected</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/19115">PR 19115</a></li>
+    <li>News keeps its stories on screen while a keyword change is checked. <span class="state wait">expected</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/19154">PR 19154</a></li>
+    <li>The ad spend section is current, not a day behind. <span class="state wait">expected</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/19182">PR 19182</a></li>
+    <li>Real photos show where a source mislabels them, and a followed regional outlet counts as its region's press. <span class="state wait">expected</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/19173">PR 19173</a> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/19147">PR 19147</a></li>
+    <li>The source panel counts a reporter the same way the reporter's profile does. <span class="state wait">expected</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/19141">PR 19141</a></li>
+  </ul>
+  <p class="cap">The release runs automatically on 27 November at 19:30 Paris. 34 of this week's changes are on staging for it (read 27 Nov 11:00 UTC). Each item is called live only after we check it on the live site the next morning.</p>
+</div></section>
+<section class="slide full"><div class="col">
+  <div class="eyebrow">What users can do now</div>
+  <h2>Try these on the live app today</h2>
+  <ul>
+    <li>Open the Morning Feed at feed.thewarroom.ai: breaking stories first, every card dated.</li>
+    <li>Send a story to a colleague as a checklist and note, from your own email.</li>
+    <li>Click an ad figure in the feed to see it in the public ad library.</li>
+    <li>Change News keywords without the feed going empty while they are checked.</li>
+    <li>Press Verify on a Daily Clips brief to see stories covered elsewhere that War Room does not hold.</li>
+    <li>Sign in to /admin with your own email and password.</li>
+  </ul>
+</div></section>
+<section class="slide full"><div class="col">
+  <div class="eyebrow">What's next</div>
+  <h2>Making the feed learn what you value</h2>
+  <ul>
+    <li><b>A take on every story,</b> with a safety net when one cannot be written well. <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/19215">PR 19215</a></li>
+    <li><b>What changed since your last email:</b> a day marker and the new reports since your last Morning Feed. <span class="state stg">built, off</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/19221">PR 19221</a></li>
+    <li><b>Thumbs up or down</b> on a story from its card; the vote names the outlet and can be undone. <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/pull/19071">PR 19071</a></li>
+    <li><b>Reporter pages:</b> one page with a reporter's stored stories for your client. <span class="state stg">built, off</span> <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18740">#18740</a></li>
+    <li><b>Social listening test:</b> a new collector for X, YouTube, Reddit and LinkedIn, measured on reach and cost before anything is switched. <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18622">#18622</a></li>
+    <li><b>Morning Feed usage figures,</b> so we can see which stories readers open. <a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/19068">#19068</a></li>
+  </ul>
+  <p class="cap">All in progress, none promised for a date.</p>
+</div></section>
+<section class="slide full"><div class="col">
+  <div class="eyebrow">What would help us next week</div>
+  <h2>Four things from you move the next week faster</h2>
+  <ul>
+    <li><b>Reader feedback:</b> what in this week's feed was useful, and what was noise.</li>
+    <li><b>Try Share:</b> share a story or two and tell us what to change before the team view goes on.</li>
+    <li><b>Social channels:</b> which channels matter most to each client, so the test runs on the right ones.</li>
+    <li><b>US data location:</b> in discussion; we will come back with options.</li>
+  </ul>
+  <p class="sub">Questions, or a deep-dive on any front: just ask.</p>
+</div></section>
+<section class="slide full"><div class="col">
+  <div class="eyebrow">Index</div>
+  <h2>The epics and every issue in this deck</h2>
+  <div class="tw"><table class="ix">
+    <tr><th>What</th><th>Issue</th><th>State</th></tr>
+    <tr><td>Morning Feed epic: Elkhound (most of this week's fronts)</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18216">#18216</a></td><td>running</td></tr>
+    <tr><td>Previous epic: Corgi</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/13326">#13326</a></td><td>closed out</td></tr>
+    <tr><td>Product plan</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/16172">#16172</a></td><td>running</td></tr>
+    <tr><td>Seven readers get the Morning Feed from 23 Nov</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18613">#18613</a></td><td>closed · met live, 27 Nov</td></tr>
+    <tr><td>Verify lists stories War Room does not hold</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/13909">#13909</a></td><td>closed · met live, 24 Nov</td></tr>
+    <tr><td>Google News links retried the next hour</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18597">#18597</a></td><td>closed · met live, 27 Nov</td></tr>
+    <tr><td>/admin opens on your own account</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18902">#18902</a></td><td>live · final checks open</td></tr>
+    <tr><td>/admin beside a client app</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18106">#18106</a></td><td>live · waiting on Jackson's run</td></tr>
+    <tr><td>Reporter pages</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18740">#18740</a></td><td>building · off</td></tr>
+    <tr><td>Social listening test</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/18622">#18622</a></td><td>measuring</td></tr>
+    <tr><td>Morning Feed usage figures</td><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/growthpigs/alpha-war-room/issues/19068">#19068</a></td><td>building</td></tr>
+  </table></div>
+  <p class="cap" style="margin-top:14px">Window: 24 Nov 13:48 UTC (last report's cutoff) to 27 Nov 10:36 UTC (frozen cutoff). 156 PRs merged: 116 code PRs (21 feat, 66 fix, 11 test, 3 docs, 1 perf, 14 other) and 40 promotion PRs (4 to production). DUs weight each code PR by its prefix (feat 1.5, perf 1.0, fix 0.8, test 0.5, docs 0.3, other 0.5): 98.7. Live state read 27 Nov 11:00 UTC from the commit each site serves (scripts/on-staging.sh): 82 live, 34 on staging for the 27 Nov release. Text only: no screenshots this week.</p>
+</div></section>
+<div class="nav">
+  <button class="arrow" id="prev" aria-label="Previous slide">&#8249;</button>
+  <div class="dots" id="dots"></div>
+  <button class="arrow" id="next" aria-label="Next slide">&#8250;</button>
+</div>
+<div class="hint">← → to navigate · F for full screen</div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var dots = document.getElementById('dots');
+  var cur = 0;
+  document.getElementById('tot').textContent = slides.length;
+  slides.forEach(function(_, i){
+    var b = document.createElement('button');
+    b.className = 'dot' + (i === 0 ? ' on' : '');
+    b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    b.addEventListener('click', function(){ go(i); });
+    dots.appendChild(b);
+  });
+  function go(n){
+    cur = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function(s, i){ s.classList.toggle('on', i === cur); });
+    Array.prototype.forEach.call(dots.children, function(d, i){ d.classList.toggle('on', i === cur); });
+    document.getElementById('cur').textContent = cur + 1;
+  }
+  document.getElementById('next').addEventListener('click', function(){ go(cur + 1); });
+  document.getElementById('prev').addEventListener('click', function(){ go(cur - 1); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(cur + 1); }
+    if (e.key === 'ArrowLeft'  || e.key === 'PageUp') { e.preventDefault(); go(cur - 1); }
+    if (e.key === 'Home') { go(0); }
+    if (e.key === 'End')  { go(slides.length - 1); }
+    if (e.key === 'f' || e.key === 'F') {
+      if (document.fullscreenElement) { document.exitFullscreen(); }
+      else if (document.documentElement.requestFullscreen) { document.documentElement.requestFullscreen(); }
+    }
+  });
+})();
+</script>
+</body>
